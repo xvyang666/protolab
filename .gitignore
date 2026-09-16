@@ -2,3 +2,6 @@
 
 __pycahce__
 *.pyc
+
+src/crash.txt
+src/debug.txt
