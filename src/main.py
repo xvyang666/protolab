@@ -6,17 +6,17 @@ def err_handle():
     from types import TracebackType
 
     def excepthook(e_type: type[BaseException], e_value: BaseException, tb: TracebackType | None):
-        with open('crash.txt', 'a') as f:
+        with open('crash.txt', 'a') as crash_f:
             t = datetime.datetime.now(datetime.timezone.utc).isoformat()
             msg = ''.join(traceback.format_exception(e_type, e_value, tb))
-            f.write(f'{t} {'-' * 32}\n{msg}')
+            crash_f.write(f'{t} {'-' * 32}\n{msg}')
 
     sys.excepthook = excepthook
 
     if '--debug' in sys.argv:
-        f = open('debug.txt', 'a')
-        sys.stdout = f
-        sys.stderr = f
+        debug_f = open('debug.txt', 'a')
+        sys.stdout = debug_f
+        sys.stderr = debug_f
 
 
 def open_window():
