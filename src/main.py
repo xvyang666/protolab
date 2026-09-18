@@ -1,4 +1,4 @@
-def err_handle():
+def _err_handle():
     """ 记录错误信息, 在所有语句前调用 """
     import sys
     import traceback
@@ -19,24 +19,26 @@ def err_handle():
         sys.stderr = debug_f
 
 
-def open_window():
-    """ 启动窗口 """
+def main():
+    _err_handle()
+
     import sys
-    from PySide6.QtWidgets import QApplication, QWidget
     from PySide6 import QtAsyncio
+    from PySide6.QtWidgets import QApplication
+    from config.setting import setting
+    from widget.main_window import MainWindow
+    from config.path_config import PathConfig
+
+    PathConfig.init()
+    setting.load()
 
     app = QApplication(sys.argv)
-    app.setStyle('Fusion')
+    app.setStyle(setting.qt_style)
 
-    window = QWidget()
+    window = MainWindow()
     window.show()
 
     QtAsyncio.run()
-
-
-def main():
-    err_handle()
-    open_window()
 
 
 if __name__ == "__main__":
