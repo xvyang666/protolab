@@ -5,9 +5,21 @@ from PySide6.QtGui import QIcon
 from bus.obj import logger
 from config.path_config import PathConfig
 from config.setting import setting
+from theme.color import LightColor, DarkColor, BaseColor
 from theme.icon import Icon
 from theme.palette import Palette, LightPalette, DarkPalette
 from theme.themeMode import ThemeMode
+
+__theme_color_map: dict[ThemeMode, BaseColor] = {
+    ThemeMode.light: LightColor,
+    ThemeMode.dark: DarkColor,
+}
+
+
+def get_theme_color():
+    """ 获取当前 theme 的 color """
+    return __theme_color_map[setting.theme]
+
 
 __theme_palette_map: dict[ThemeMode, Palette] = {
     ThemeMode.light: LightPalette,

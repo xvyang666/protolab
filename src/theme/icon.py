@@ -8,3 +8,6 @@ class Icon(Enum):
 
 class icon(Icon):
     code_assistant_protocol = 'codeAssistantProtocol.svg'
+    palette = 'palette.svg'
+    settings = 'settings.svg'
+    system_theme_selected = 'systemThemeSelected.svg'

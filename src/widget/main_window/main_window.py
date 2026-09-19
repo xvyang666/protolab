@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QWidget
+from PySide6.QtWidgets import QWidget, QVBoxLayout
 
 from bus.global_signal import global_signal
 from config.__meta__ import Meta
@@ -6,6 +6,7 @@ from config.setting import setting
 from theme.icon import icon
 from theme.util import get_theme_icon
 from ui.main_window.main_window import Ui_MainWindow
+from widget.main_window.left_menu_item import LeftMenuItem
 from widget.setting.setting import Setting
 
 
@@ -13,16 +14,23 @@ class MainWindow(QWidget, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.reIcon()
+        self.rethemeUi()
 
         self.setWindowTitle(Meta.name)
         self.resize(setting.main_window_loc.w, setting.main_window_loc.h)
         self.move(setting.main_window_loc.x, setting.main_window_loc.y)
 
+        left_menu_layout = self.left_meun.layout().layout()
+        assert isinstance(left_menu_layout, QVBoxLayout)
+        setting_item = LeftMenuItem(self, title='设置', icon=icon.settings)
+        left_menu_layout.addStretch()
+        left_menu_layout.addWidget(setting_item)
+
+
         setting_page = Setting(self)
         self.stacked_widget.addWidget(setting_page)
 
-        global_signal.register_theme_changed_fn(self.reIcon)
+        global_signal.register_changed_fn(theme_changed_fn=self.rethemeUi)
 
     def closeEvent(self, event, /):
         setting.main_window_loc.x = self.x()
@@ -33,5 +41,7 @@ class MainWindow(QWidget, Ui_MainWindow):
 
         super().closeEvent(event)
 
-    def reIcon(self):
+    def rethemeUi(self):
         self.setWindowIcon(get_theme_icon(icon.code_assistant_protocol))
+
+

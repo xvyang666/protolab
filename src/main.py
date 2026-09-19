@@ -44,12 +44,9 @@ def main():
         ThemeMode.dark: Qt.ColorScheme.Dark,
     }
     app.styleHints().setColorScheme(_map[setting.theme])
-
-    def theme_changed(theme: ThemeMode):
-        setting.theme = theme
-        app.styleHints().setColorScheme(_map[theme])
-
-    global_signal.register_theme_changed_fn(theme_changed)
+    global_signal.register_changed_fn(
+        theme_changed_fn=lambda theme: app.styleHints().setColorScheme(_map[theme]),
+    )
 
     window = MainWindow()
     GlobalRef.main_window = window

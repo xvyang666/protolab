@@ -41,5 +41,5 @@ class Setting(QWidget, Ui_Setting):
         global_signal.theme_changed.emit(theme)
 
     def reIcon(self):
-        self.style_icon.setPixmap(get_theme_icon(icon.code_assistant_protocol).pixmap(24, 24))
-        self.theme_icon.setPixmap(get_theme_icon(icon.code_assistant_protocol).pixmap(24, 24))
+        self.style_icon.setPixmap(get_theme_icon(icon.palette).pixmap(24, 24))
+        self.theme_icon.setPixmap(get_theme_icon(icon.system_theme_selected).pixmap(24, 24))
