@@ -43,7 +43,7 @@ from PySide6.QtWidgets import (
 )
 
 from config.setting import setting
-from theme.palette import palette
+from theme.util import get_theme_palette
 from theme.themeMode import ThemeMode
 
 
@@ -344,7 +344,7 @@ class MainWindow(QMainWindow):
             QApplication.setPalette(QPalette())
 
         else:
-            QApplication.setPalette(palette())
+            QApplication.setPalette(get_theme_palette())
 
 
 if __name__ == "__main__":

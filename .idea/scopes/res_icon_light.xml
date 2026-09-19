@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="res/icon/light" pattern="file[protolab]:res/icon/light//*" />
+</component>

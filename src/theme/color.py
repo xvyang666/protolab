@@ -72,7 +72,7 @@ class _ActionColor(BaseModel):
     activatedOpacity: float
 
 
-class _BaseColor(BaseModel):
+class BaseColor(BaseModel):
     common: _CommonColor = _CommonColor()
     grey: _GreyScale = _GreyScale()
     mode: ThemeMode
@@ -88,7 +88,7 @@ class _BaseColor(BaseModel):
     action: _ActionColor
 
 
-class _LightColor(_BaseColor):
+class _LightColor(BaseColor):
     mode: ThemeMode = ThemeMode.light
     primary: _ColorVariant = _ColorVariant(main="#1976d2", light="#42a5f5", dark="#1565c0", contrastText="#ffffff")
     secondary: _ColorVariant = _ColorVariant(main="#9c27b0", light="#ba68c8", dark="#7b1fa2", contrastText="#ffffff")
@@ -118,7 +118,7 @@ class _LightColor(_BaseColor):
     )
 
 
-class _DarkColor(_BaseColor):
+class _DarkColor(BaseColor):
     mode: ThemeMode = ThemeMode.dark
     primary: _ColorVariant = _ColorVariant(main="#90caf9", light="#e3f2fd", dark="#42a5f5", contrastText="#DF000000")
     secondary: _ColorVariant = _ColorVariant(main="#ce93d8", light="#f3e5f5", dark="#ab47bc", contrastText="#DF000000")
@@ -127,7 +127,7 @@ class _DarkColor(_BaseColor):
     info: _ColorVariant = _ColorVariant(main="#29b6f6", light="#4fc3f7", dark="#0288d1", contrastText="#DF000000")
     success: _ColorVariant = _ColorVariant(main="#66bb6a", light="#81c784", dark="#388e3c", contrastText="#DF000000")
     divider: str = "#1FFFFFFF"
-    background: _BackgroundColor = _BackgroundColor(paper="#212121", default="#121212")
+    background: _BackgroundColor = _BackgroundColor(paper="#333333", default="#212121")
     text: _TextColor = _TextColor(
         primary="#ffffff",
         secondary="#B3FFFFFF",
