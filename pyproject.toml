@@ -4,6 +4,7 @@ version = "0.1.0"
 requires-python = ">=3.12"
 dependencies = [
     "aiofiles>=25.1.0",
+    "loguru>=0.7.3",
     "pydantic>=2.13.5",
     "pyside6>=6.11.2",
 ]

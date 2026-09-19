@@ -38,7 +38,7 @@ def main():
 
     app = QApplication(sys.argv)
     GlobalRef.app = app
-    app.setStyle(setting.qt_style)
+    app.setStyle(setting.style)
     _map: dict[ThemeMode, Qt.ColorScheme] = {
         ThemeMode.light: Qt.ColorScheme.Light,
         ThemeMode.dark: Qt.ColorScheme.Dark,

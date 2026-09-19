@@ -10,6 +10,7 @@ class PathConfig:
     res_dir = proj_dir / "res"
     data_dir = proj_dir / "data" / Meta.version
 
+    log_dir = data_dir / 'log'
     setting_json_file = data_dir / "settings.json"
 
     @staticmethod

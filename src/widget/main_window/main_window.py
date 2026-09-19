@@ -6,6 +6,7 @@ from config.setting import setting
 from theme.icon import icon
 from theme.util import get_theme_icon
 from ui.main_window.main_window import Ui_MainWindow
+from widget.setting.setting import Setting
 
 
 class MainWindow(QWidget, Ui_MainWindow):
@@ -17,6 +18,9 @@ class MainWindow(QWidget, Ui_MainWindow):
         self.setWindowTitle(Meta.name)
         self.resize(setting.main_window_loc.w, setting.main_window_loc.h)
         self.move(setting.main_window_loc.x, setting.main_window_loc.y)
+
+        setting_page = Setting(self)
+        self.stacked_widget.addWidget(setting_page)
 
         global_signal.register_theme_changed_fn(self.reIcon)
 

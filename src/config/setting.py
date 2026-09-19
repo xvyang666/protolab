@@ -12,7 +12,7 @@ class _MainWindowLoc(BaseModel):
 
 
 class _Setting(BaseModel):
-    qt_style: str = 'fusion'
+    style: str = 'fusion'
     theme: ThemeMode = ThemeMode.light
     main_window_loc: _MainWindowLoc = _MainWindowLoc()
 

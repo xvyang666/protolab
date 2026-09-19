@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="代码检查" pattern="file[protolab]:src//*.py&amp;&amp;!file[protolab]:src/ui//*" />
+</component>

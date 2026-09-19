@@ -2,6 +2,7 @@ from pathlib import Path
 
 from PySide6.QtGui import QIcon
 
+from bus.obj import logger
 from config.path_config import PathConfig
 from config.setting import setting
 from theme.icon import Icon
@@ -38,7 +39,7 @@ def get_theme_icon(i: Icon) -> QIcon:
 
     icon = QIcon(str(__theme_icon_dir_map[setting.theme] / i.value))
     if icon.isNull():
-        print(f'null icon: {setting.theme} {i}')
+        logger.default.warning(f'null icon: {setting.theme} {i}')
 
         # 由于枚举是以 light 目录为基准生成的, 所以当前主题如果是 light 那图标正常肯定存在
         # 如果 light 也不存在, 那也不用再试一次了

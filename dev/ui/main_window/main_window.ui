@@ -37,7 +37,7 @@
        <height>16777215</height>
       </size>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout" stretch="">
+     <layout class="QVBoxLayout" name="verticalLayout">
       <property name="spacing">
        <number>0</number>
       </property>
@@ -57,10 +57,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QStackedWidget" name="stacked_widget">
-     <widget class="QWidget" name="page"/>
-     <widget class="QWidget" name="page_2"/>
-    </widget>
+    <widget class="QStackedWidget" name="stacked_widget"/>
    </item>
   </layout>
  </widget>
