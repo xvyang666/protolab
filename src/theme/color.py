@@ -14,8 +14,6 @@ QColor('rgba(r, g, b, a)')
 """
 from pydantic import BaseModel
 
-from theme.themeMode import ThemeMode
-
 
 class _CommonColor(BaseModel):
     black: str = "#000000"
@@ -75,7 +73,7 @@ class _ActionColor(BaseModel):
 class BaseColor(BaseModel):
     common: _CommonColor = _CommonColor()
     grey: _GreyScale = _GreyScale()
-    mode: ThemeMode
+
     primary: _ColorVariant
     secondary: _ColorVariant
     error: _ColorVariant
@@ -89,7 +87,6 @@ class BaseColor(BaseModel):
 
 
 class _LightColor(BaseColor):
-    mode: ThemeMode = ThemeMode.light
     primary: _ColorVariant = _ColorVariant(main="#1976d2", light="#42a5f5", dark="#1565c0", contrastText="#ffffff")
     secondary: _ColorVariant = _ColorVariant(main="#9c27b0", light="#ba68c8", dark="#7b1fa2", contrastText="#ffffff")
     error: _ColorVariant = _ColorVariant(main="#d32f2f", light="#ef5350", dark="#c62828", contrastText="#ffffff")
@@ -119,7 +116,6 @@ class _LightColor(BaseColor):
 
 
 class _DarkColor(BaseColor):
-    mode: ThemeMode = ThemeMode.dark
     primary: _ColorVariant = _ColorVariant(main="#90caf9", light="#e3f2fd", dark="#42a5f5", contrastText="#DF000000")
     secondary: _ColorVariant = _ColorVariant(main="#ce93d8", light="#f3e5f5", dark="#ab47bc", contrastText="#DF000000")
     error: _ColorVariant = _ColorVariant(main="#f44336", light="#e57373", dark="#d32f2f", contrastText="#ffffff")

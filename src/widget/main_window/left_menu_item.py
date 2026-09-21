@@ -2,14 +2,14 @@ from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QWidget, QLabel, QHBoxLayout
 
 from bus.global_signal import global_signal
-from theme.icon import Icon
-from theme.util import get_theme_icon, get_theme_color
+from theme.icon import IconEnum
+from bus.obj import theme
 
 
 class LeftMenuItem(QWidget):
     _is_selected_key = 'selected'
 
-    def __init__(self, parent: QWidget, title: str, icon: Icon) -> None:
+    def __init__(self, parent: QWidget, title: str, icon: IconEnum) -> None:
         super().__init__(parent)
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)  # 加这个才能用 qss 控制背景
 
@@ -19,6 +19,7 @@ class LeftMenuItem(QWidget):
         self._is_selected = False
         self.setProperty(self._is_selected_key, False)
 
+        self.ar = QLabel(self)
         self.icon_label = QLabel(self)
         self.title_label = QLabel(self)
 
@@ -47,12 +48,13 @@ class LeftMenuItem(QWidget):
         self.title_label.setText(self.tr(self.title))
 
     def rethemeUi(self):
-        self.icon_label.setPixmap(get_theme_icon(self.icon).pixmap(24, 24))
+        self.icon_label.setPixmap(theme.get_icon(self.icon).pixmap(24, 24))
 
-        c = get_theme_color()
+        c = theme.color
         self.setStyleSheet(f"""
             {self.__class__.__name__}[{self._is_selected_key}="true"] {{
                 background-color: {c.action.selected};
+                border-left: 2px solid {c.primary.main};
             }}
             
             {self.__class__.__name__}:hover {{

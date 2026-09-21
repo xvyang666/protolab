@@ -43,8 +43,8 @@ from PySide6.QtWidgets import (
 )
 
 from config.setting import setting
-from theme.util import get_theme_palette
-from theme.themeMode import ThemeMode
+from theme.theme_mode import ThemeMode
+from util.get_pyside6_qpalette import get_pyside6_QPalette
 
 
 class TestDialog(QDialog):
@@ -222,7 +222,6 @@ class MainWindow(QMainWindow):
         root1 = QTreeWidgetItem(tree, ["节点 1", "正常"])
         QTreeWidgetItem(root1, ["子节点 1-1", "激活"])
         QTreeWidgetItem(root1, ["子节点 1-2", "禁用"])
-        root2 = QTreeWidgetItem(tree, ["节点 2", "悬停"])
         tree.expandAll()
         tree_layout.addWidget(tree)
 
@@ -325,14 +324,14 @@ class MainWindow(QMainWindow):
         self.statusBar().showMessage(f"当前 Style 已切换为: {style_name}")
 
     def toggle_theme_mode(self):
-        setting.theme = ThemeMode.light if setting.theme == ThemeMode.dark else ThemeMode.dark
+        setting.theme_mode = ThemeMode.light if setting.theme_mode == ThemeMode.dark else ThemeMode.dark
 
         color_schema = {
             ThemeMode.light: Qt.ColorScheme.Light,
             ThemeMode.dark: Qt.ColorScheme.Dark,
         }
 
-        QApplication.styleHints().setColorScheme(color_schema[setting.theme])
+        QApplication.styleHints().setColorScheme(color_schema[setting.theme_mode])
         self.update_palette()
 
     def toggle_palette(self):
@@ -344,7 +343,7 @@ class MainWindow(QMainWindow):
             QApplication.setPalette(QPalette())
 
         else:
-            QApplication.setPalette(get_theme_palette())
+            QApplication.setPalette(get_pyside6_QPalette())
 
 
 if __name__ == "__main__":

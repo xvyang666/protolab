@@ -14,8 +14,9 @@ class PathConfig:
     setting_json_file = data_dir / "settings.json"
 
     @staticmethod
-    def init():
+    def init_create_dir():
         for i in [
-            PathConfig.data_dir
+            PathConfig.data_dir,
+            PathConfig.log_dir,
         ]:
             i.mkdir(parents=True, exist_ok=True)

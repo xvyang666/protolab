@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 from config.path_config import PathConfig
-from theme.themeMode import ThemeMode
+from theme.theme_mode import ThemeMode
 
 
 class _MainWindowLoc(BaseModel):
@@ -13,7 +13,7 @@ class _MainWindowLoc(BaseModel):
 
 class _Setting(BaseModel):
     style: str = 'fusion'
-    theme: ThemeMode = ThemeMode.light
+    theme_mode: ThemeMode = ThemeMode.light
     main_window_loc: _MainWindowLoc = _MainWindowLoc()
 
     def load(self):

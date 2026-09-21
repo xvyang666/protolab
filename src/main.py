@@ -31,22 +31,21 @@ def main():
     from config.path_config import PathConfig
     from bus.global_signal import global_signal
     from bus.global_ref import GlobalRef
-    from theme.themeMode import ThemeMode
+    from theme.theme_mode import ThemeMode
 
-    PathConfig.init()
+    PathConfig.init_create_dir()
     setting.load()
 
     app = QApplication(sys.argv)
-    GlobalRef.app = app
     app.setStyle(setting.style)
+    GlobalRef.app = app
+
     _map: dict[ThemeMode, Qt.ColorScheme] = {
         ThemeMode.light: Qt.ColorScheme.Light,
         ThemeMode.dark: Qt.ColorScheme.Dark,
     }
-    app.styleHints().setColorScheme(_map[setting.theme])
-    global_signal.register_changed_fn(
-        theme_changed_fn=lambda theme: app.styleHints().setColorScheme(_map[theme]),
-    )
+    app.styleHints().setColorScheme(_map[setting.theme_mode])
+    global_signal.register_changed_fn(theme_changed_fn=lambda t: app.styleHints().setColorScheme(_map[t]), )
 
     window = MainWindow()
     GlobalRef.main_window = window

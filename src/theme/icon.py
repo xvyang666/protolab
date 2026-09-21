@@ -2,11 +2,11 @@
 from enum import Enum
 
 
-class Icon(Enum):
+class IconEnum(Enum):
     """ 该类仅作类型标注用 """
 
 
-class icon(Icon):
+class Icon(IconEnum):
     code_assistant_protocol = 'codeAssistantProtocol.svg'
     palette = 'palette.svg'
     settings = 'settings.svg'

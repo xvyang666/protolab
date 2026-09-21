@@ -68,7 +68,7 @@ def generate_res_code(tree: dict, indent: int = 4) -> list[str]:
     ind = ' ' * indent
     for k, v in sorted(tree.items()):
         if isinstance(v, dict):
-            lines.append(f"{ind}class {k}(Icon):")
+            lines.append(f"{ind}class {k}(IconEnum):")
             if not v:
                 lines.append(f"{ind}    ...")
             else:
@@ -95,11 +95,11 @@ def main():
         "from enum import Enum",
         "",
         "",
-        "class Icon(Enum):",
+        "class IconEnum(Enum):",
         '    """ 该类仅作类型标注用 """',
         "",
         "",
-        "class icon(Icon):"
+        "class Icon(IconEnum):"
     ]
     code = generate_res_code(light_tree, 4)
     if code:

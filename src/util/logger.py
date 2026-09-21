@@ -11,8 +11,7 @@ from pydantic import BaseModel
 from config.path_config import PathConfig
 
 if None:
-    # noinspection PyUnusedImports
-    from loguru import Record, Message
+    from loguru import Record
 
 
 class Log(BaseModel):
