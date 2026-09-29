@@ -2,6 +2,7 @@ from pydantic import BaseModel
 
 from config.path_config import PathConfig
 from model.SerialConnConfig import SerialConnConfig
+from model.SerialSendConfig import SerialSendConfig
 from theme.theme_mode import ThemeMode
 
 
@@ -18,7 +19,8 @@ class _Setting(BaseModel):
     main_window_loc: _MainWindowLoc = _MainWindowLoc()
 
     serial_baud_rate_list: list[int] = [9600, 19200, 38400, 57600, 115200]
-    default_serial_settings: dict[str, SerialConnConfig] = {}
+    serial_connect_config: dict[str, SerialConnConfig] = {}
+    serial_send_config: dict[str, SerialSendConfig] = {}
 
     def load(self):
         try:

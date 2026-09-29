@@ -9,6 +9,7 @@ from bus.obj import theme, logger
 from theme.icon import Icon
 from ui.serial.serial_page import Ui_SerialPage
 from widget.serial.serial_item import SerialItem
+from widget.serial.serial_panel import SerialPanel
 
 
 class SerialPage(QWidget):
@@ -20,7 +21,10 @@ class SerialPage(QWidget):
         self.ui.splitter.setStretchFactor(1, 1)
         self.ui.refresh_btn.setIcon(theme.get_icon(Icon.refresh))
 
+        self.ui.com_list.currentItemChanged.connect(self.select_panel)
         self.ui.refresh_btn.clicked.connect(lambda: asyncio.create_task(self.refresh_com_list()))
+
+        self.panel_map: dict[str, SerialPanel] = {}
 
         asyncio.create_task(self.refresh_com_list())
 
@@ -36,6 +40,18 @@ class SerialPage(QWidget):
 
             names.sort(key=lambda x: int(match.group()) if (match := re.search(r'\d+', x)) else 0)
 
+            # 重建前记住当前选中的名字
+            last_select_name: str | None = None
+            last_item: QListWidgetItem | None = self.ui.com_list.currentItem()
+            if last_item:
+                last_select_name = last_item.data(Qt.ItemDataRole.UserRole)
+
+            # 重建开始, 阻止发射不必要的信号
+            self.ui.com_list.blockSignals(True)
+
+            # 用于在循环中记住对应的 item
+            target_item: QListWidgetItem | None = None
+
             self.ui.com_list.clear()
             for name in names:
                 custom_widget = SerialItem(self, name)
@@ -44,10 +60,30 @@ class SerialPage(QWidget):
                 item.setData(Qt.ItemDataRole.UserRole, name)
                 self.ui.com_list.setItemWidget(item, custom_widget)
 
+                if name == last_select_name:
+                    target_item = item
+
+            # 重建结束, 恢复信号
+            self.ui.com_list.blockSignals(False)
+
+            # 恢复之前的点击状态, 如果找不到就选中第一个
+            if target_item:
+                self.ui.com_list.setCurrentItem(target_item)
+            else:
+                if self.ui.com_list.count() > 0:
+                    self.ui.com_list.setCurrentRow(0)
+
         except Exception as e:
-            logger.default.error(e)
+            logger.default.exception(e)
 
         self.ui.refresh_btn.setEnabled(True)
 
-    def conn_success(self, port_name: str):
-        print(port_name)
+    def select_panel(self, item: QListWidgetItem):
+        name: str = item.data(Qt.ItemDataRole.UserRole)
+        panel = self.panel_map.get(name)
+        if not panel:
+            panel = SerialPanel(self, name)
+            self.panel_map[name] = panel
+            self.ui.stackedWidget.addWidget(panel)
+
+        self.ui.stackedWidget.setCurrentWidget(panel)

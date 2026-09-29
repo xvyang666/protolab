@@ -15,6 +15,7 @@ class Icon(IconEnum):
     palette = 'palette.svg'
     refresh = 'refresh.svg'
     run = 'run.svg'
+    send = 'send.svg'
     serial = 'serial.svg'
     settings = 'settings.svg'
     stop = 'stop.svg'

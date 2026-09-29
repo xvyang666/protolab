@@ -2,44 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="106e9ab2-7a6d-41f5-abfe-a7269c761370" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/dev/test/serial_asyncio_com10.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dev/test/serial_asyncio_com11.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/icon/dark/edit.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/icon/dark/refresh.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/icon/dark/run.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/icon/dark/stop.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/icon/dark/unable_dot.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/icon/light/edit.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/icon/light/enable_dot.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/icon/light/modbus.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/icon/light/mqtt.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/icon/light/refresh.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/icon/light/run.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/icon/light/serial.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/icon/light/stop.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/icon/light/tcp.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/icon/light/udp.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/icon/light/unable_dot.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bus/serial_conn_manage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/SerialConnConfig.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/util/async_serial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/util/combobox_set_default.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widget/serial/serial_item.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widget/serial/serial_item_setting.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/widget/serial/serial_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/test/数据显示示例.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/icon/dark/send.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/icon/light/send.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/SerialSendConfig.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/widget/serial/serial_panel.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/ui/main_window/main_window.ui" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bus/global_signal.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bus/global_signal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bus/serial_conn_manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bus/serial_conn_manage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/setting.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/setting.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/theme/icon.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme/icon.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/main_window/main_window.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widget/main_window/left_menu_item.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widget/main_window/main_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/widget/main_window/main_window.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widget/setting/setting.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/widget/setting/setting_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uv.lock" beforeDir="false" afterPath="$PROJECT_DIR$/uv.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widget/serial/serial_item.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/widget/serial/serial_item.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widget/serial/serial_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/widget/serial/serial_page.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,6 +70,7 @@
     "Python.serial_asyncio_com11.executor": "Run",
     "Python.serial_asyncio_test.executor": "Run",
     "Python.util.executor": "Run",
+    "Python.数据显示示例.executor": "Run",
     "Python.深浅色调色板对比 (1).executor": "Run",
     "Python.深浅色调色板对比.executor": "Run",
     "Python.深色标题栏.executor": "Run",
@@ -121,9 +95,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\dev\protolab\res\icon\dark" />
       <recent name="D:\dev\protolab\res\icon\light" />
+      <recent name="D:\dev\protolab\src\model" />
+      <recent name="D:\dev\protolab\src\widget\serial" />
       <recent name="D:\dev\protolab\dev\test" />
-      <recent name="D:\dev\protolab\res\icon\light\a" />
-      <recent name="D:\dev\protolab\res\txt" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\dev\protolab\src\util" />
@@ -159,6 +133,7 @@
               <entry key="main" value="STOPPED" />
               <entry key="serial_asyncio_com10" value="FAILED" />
               <entry key="serial_asyncio_com11" value="STOPPED" />
+              <entry key="数据显示示例" value="STOPPED" />
             </map>
           </value>
         </entry>
@@ -183,6 +158,31 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dev/test/菜单示例.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="数据显示示例" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="protolab" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dev/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="false" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dev/test/数据显示示例.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -345,11 +345,13 @@
       <item itemvalue="Python.main" />
       <item itemvalue="Python.serial_asyncio_com10" />
       <item itemvalue="Python.serial_asyncio_com11" />
+      <item itemvalue="Python.数据显示示例" />
       <item itemvalue="Python.gen_res_code" />
       <item itemvalue="Python.菜单示例" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.数据显示示例" />
         <item itemvalue="Python.serial_asyncio_com11" />
         <item itemvalue="Python.serial_asyncio_com10" />
         <item itemvalue="Python.菜单示例" />
@@ -365,17 +367,28 @@
       <option name="presentableId" value="Default" />
       <updated>1789739063237</updated>
       <workItem from="1789739064484" duration="58384000" />
-      <workItem from="1790595474175" duration="45291000" />
+      <workItem from="1790595474175" duration="57302000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/widget/serial/serial_page.py</url>
+          <line>81</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/protolab$qss.coverage" NAME="qss 覆盖结果" MODIFIED="1789749673945" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/test" />
     <SUITE FILE_PATH="coverage/protolab$obj.coverage" NAME="obj 覆盖结果" MODIFIED="1790004238303" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/bus" />
-    <SUITE FILE_PATH="coverage/protolab$main.coverage" NAME="main 覆盖结果" MODIFIED="1790678225474" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/protolab$main.coverage" NAME="main 覆盖结果" MODIFIED="1790700467452" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/protolab$gen_res_and_icon_code__1_.coverage" NAME="gen_res_and_icon_code (1) 覆盖结果" MODIFIED="1789820081445" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/tool" />
     <SUITE FILE_PATH="coverage/protolab$gen_res_code__1_.coverage" NAME="gen_res_code (1) 覆盖结果" MODIFIED="1789825816013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/tool" />
     <SUITE FILE_PATH="coverage/protolab$serial_asyncio_com10__1_.coverage" NAME="serial_asyncio_com10 覆盖结果" MODIFIED="1790669138874" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/test" />
@@ -387,7 +400,7 @@
     <SUITE FILE_PATH="coverage/protolab$serial_asyncio_com11.coverage" NAME="serial_asyncio_com11 覆盖结果" MODIFIED="1790669139601" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/test" />
     <SUITE FILE_PATH="coverage/protolab$gen_icon_code.coverage" NAME="gen_icon_code 覆盖结果" MODIFIED="1790003189037" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/tool" />
     <SUITE FILE_PATH="coverage/protolab$color.coverage" NAME="color 覆盖结果" MODIFIED="1790004392827" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/theme" />
-    <SUITE FILE_PATH="coverage/protolab$.coverage" NAME="菜单示例 覆盖结果" MODIFIED="1790595771316" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/test" />
     <SUITE FILE_PATH="coverage/protolab$serial_asyncio_test.coverage" NAME="serial_asyncio_com10 覆盖结果" MODIFIED="1790668982335" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/test" />
+    <SUITE FILE_PATH="coverage/protolab$.coverage" NAME="数据显示示例 覆盖结果" MODIFIED="1790688424338" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/test" />
   </component>
 </project>
