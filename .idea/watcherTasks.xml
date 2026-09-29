@@ -6,7 +6,7 @@
       <option name="checkSyntaxErrors" value="true" />
       <option name="description" />
       <option name="exitCodeBehavior" value="ERROR" />
-      <option name="fileExtension" value="ui" />
+      <option name="fileExtension" value="QtDesigner文件" />
       <option name="immediateSync" value="true" />
       <option name="name" value="ui2py_auto" />
       <option name="output" value="$ProjectFileDir$/src/ui" />

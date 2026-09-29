@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <defs>
+        <!-- 经典蓝色外壳渐变 -->
+        <linearGradient id="serial-body" x1="12" y1="5" x2="12" y2="19" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#3B82F6"/>
+            <stop offset="100%" stop-color="#1D4ED8"/>
+        </linearGradient>
+
+        <!-- 金属屏蔽罩渐变 -->
+        <linearGradient id="serial-metal" x1="12" y1="7.5" x2="12" y2="16.5" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#F8FAFC"/>
+            <stop offset="40%" stop-color="#E2E8F0"/>
+            <stop offset="100%" stop-color="#94A3B8"/>
+        </linearGradient>
+
+        <!-- 针脚底座深色槽渐变 -->
+        <linearGradient id="serial-bed" x1="12" y1="8.5" x2="12" y2="15.5" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#0F172A"/>
+            <stop offset="100%" stop-color="#1E293B"/>
+        </linearGradient>
+
+        <!-- 镀金针脚渐变 -->
+        <linearGradient id="serial-pin" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#FDE047"/>
+            <stop offset="100%" stop-color="#D97706"/>
+        </linearGradient>
+
+        <!-- 金属螺丝柱渐变 -->
+        <linearGradient id="serial-screw" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#CBD5E1"/>
+            <stop offset="100%" stop-color="#64748B"/>
+        </linearGradient>
+    </defs>
+
+    <!-- 1. 串口塑料蓝色主外壳 -->
+    <rect x="2" y="5" width="20" height="14" rx="3" fill="url(#serial-body)"/>
+    <rect x="2" y="5" width="20" height="14" rx="3" stroke="#60A5FA" stroke-width="0.5" stroke-opacity="0.6" fill="none"/>
+
+    <!-- 2. 左右两侧固定螺栓孔 -->
+    <circle cx="4.5" cy="12" r="1.8" fill="url(#serial-screw)"/>
+    <circle cx="4.5" cy="12" r="0.9" fill="#0F172A"/>
+
+    <circle cx="19.5" cy="12" r="1.8" fill="url(#serial-screw)"/>
+    <circle cx="19.5" cy="12" r="0.9" fill="#0F172A"/>
+
+    <!-- 3. D-Sub 梯形金属屏蔽罩 -->
+    <path d="M 7.4,7.5 H 16.6 C 17.2,7.5 17.6,7.9 17.5,8.5 L 16.6,15.5 C 16.5,16.1 16.0,16.5 15.4,16.5 H 8.6 C 8.0,16.5 7.5,16.1 7.4,15.5 L 6.5,8.5 C 6.4,7.9 6.8,7.5 7.4,7.5 Z" fill="url(#serial-metal)"/>
+
+    <!-- 4. 内部塑料针脚槽 -->
+    <path d="M 8.1,8.5 H 15.9 C 16.3,8.5 16.6,8.8 16.5,9.2 L 15.8,14.8 C 15.7,15.2 15.3,15.5 14.9,15.5 H 9.1 C 8.7,15.5 8.3,15.2 8.2,14.8 L 7.5,9.2 C 7.4,8.8 7.7,8.5 8.1,8.5 Z" fill="url(#serial-bed)"/>
+
+    <!-- 5. DB9 标准 9 针脚 (上 5 针, 下 4 针) -->
+    <!-- 上排 5 针 -->
+    <circle cx="9.2" cy="10.4" r="0.55" fill="url(#serial-pin)"/>
+    <circle cx="10.6" cy="10.4" r="0.55" fill="url(#serial-pin)"/>
+    <circle cx="12.0" cy="10.4" r="0.55" fill="url(#serial-pin)"/>
+    <circle cx="13.4" cy="10.4" r="0.55" fill="url(#serial-pin)"/>
+    <circle cx="14.8" cy="10.4" r="0.55" fill="url(#serial-pin)"/>
+
+    <!-- 下排 4 针 -->
+    <circle cx="9.9" cy="13.6" r="0.55" fill="url(#serial-pin)"/>
+    <circle cx="11.3" cy="13.6" r="0.55" fill="url(#serial-pin)"/>
+    <circle cx="12.7" cy="13.6" r="0.55" fill="url(#serial-pin)"/>
+    <circle cx="14.1" cy="13.6" r="0.55" fill="url(#serial-pin)"/>
+</svg>

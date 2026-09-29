@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 
 from config.path_config import PathConfig
+from model.SerialConnConfig import SerialConnConfig
 from theme.theme_mode import ThemeMode
 
 
@@ -15,6 +16,9 @@ class _Setting(BaseModel):
     style: str = 'fusion'
     theme_mode: ThemeMode = ThemeMode.light
     main_window_loc: _MainWindowLoc = _MainWindowLoc()
+
+    serial_baud_rate_list: list[int] = [9600, 19200, 38400, 57600, 115200]
+    default_serial_settings: dict[str, SerialConnConfig] = {}
 
     def load(self):
         try:

@@ -21,39 +21,39 @@ def _err_handle():
         sys.stderr = debug_f
 
 
-def main():
-    import sys
-    from PySide6 import QtAsyncio
-    from PySide6.QtWidgets import QApplication
+async def main():
     from PySide6.QtCore import Qt
     from config.setting import setting
     from widget.main_window.main_window import MainWindow
     from config.path_config import PathConfig
-    from bus.global_signal import global_signal
     from bus.global_ref import GlobalRef
     from theme.theme_mode import ThemeMode
 
     PathConfig.init_create_dir()
     setting.load()
 
-    app = QApplication(sys.argv)
     app.setStyle(setting.style)
-    GlobalRef.app = app
 
     _map: dict[ThemeMode, Qt.ColorScheme] = {
         ThemeMode.light: Qt.ColorScheme.Light,
         ThemeMode.dark: Qt.ColorScheme.Dark,
     }
     app.styleHints().setColorScheme(_map[setting.theme_mode])
-    global_signal.register_changed_fn(theme_changed_fn=lambda t: app.styleHints().setColorScheme(_map[t]), )
 
     window = MainWindow()
     GlobalRef.main_window = window
     window.show()
 
-    QtAsyncio.run()
-
 
 if __name__ == "__main__":
     _err_handle()
-    main()
+
+    import sys
+    from PySide6.QtWidgets import QApplication
+    from PySide6 import QtAsyncio
+    from bus.global_ref import GlobalRef
+
+    app = QApplication(sys.argv)
+    GlobalRef.app = app
+
+    QtAsyncio.run(main())

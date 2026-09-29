@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" fill="none">
+    <defs>
+        <!-- Fluent 主背景渐变 -->
+        <linearGradient id="fluentBgGrad" x1="16" y1="16" x2="112" y2="112" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#E03248"/>
+            <stop offset="100%" stop-color="#8A0028"/>
+        </linearGradient>
+
+        <!-- 遥测信号波束渐变 -->
+        <linearGradient id="signalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FFD6D6"/>
+            <stop offset="100%" stop-color="#FFFFFF"/>
+        </linearGradient>
+
+        <!-- Pub/Sub 终端节点渐变 -->
+        <linearGradient id="nodeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#38BDF8"/>
+            <stop offset="100%" stop-color="#0284C7"/>
+        </linearGradient>
+
+        <!-- Fluent 柔和阴影 -->
+        <filter id="fluentShadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.18"/>
+            <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.10"/>
+        </filter>
+
+        <!-- 信号发光效果 -->
+        <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#FF4D6D" flood-opacity="0.3"/>
+        </filter>
+    </defs>
+
+    <!-- 主体卡片图层 (Broker Base) -->
+    <g filter="url(#fluentShadow)">
+        <rect x="16" y="16" width="96" height="96" rx="26" fill="url(#fluentBgGrad)"/>
+
+        <!-- Fluent 标志性的半透明玻璃高光层 -->
+        <path d="M 16 42 C 16 27.641 27.641 16 42 16 L 86 16 C 100.359 16 112 27.641 112 42 L 112 60 C 75 66 42 82 16 112 Z" fill="#FFFFFF" fill-opacity="0.15"/>
+    </g>
+
+    <!-- MQTT 架构元素 (Central Broker, Wireless Arcs, Pub/Sub Nodes) -->
+    <g filter="url(#glowEffect)">
+        <!-- 中央 Broker 节点 -->
+        <circle cx="64" cy="68" r="11" fill="#FFFFFF"/>
+        <circle cx="64" cy="68" r="5" fill="#B91C1C"/>
+
+        <!-- 遥测无线信号波 (Message Broadcasting) -->
+        <path d="M 44 48 A 28 28 0 0 1 84 48" stroke="url(#signalGrad)" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+        <path d="M 34 38 A 42 42 0 0 1 94 38" stroke="url(#signalGrad)" stroke-width="4.5" stroke-linecap="round" opacity="0.85" fill="none"/>
+
+        <!-- 左侧 Publisher / Subscriber 分支链路与节点 -->
+        <path d="M 64 68 L 42 88" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" opacity="0.9"/>
+        <circle cx="42" cy="88" r="7.5" fill="url(#nodeGrad)"/>
+        <circle cx="42" cy="88" r="3" fill="#FFFFFF"/>
+
+        <!-- 右侧 Publisher / Subscriber 分支链路与节点 -->
+        <path d="M 64 68 L 86 88" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" opacity="0.9"/>
+        <circle cx="86" cy="88" r="7.5" fill="url(#nodeGrad)"/>
+        <circle cx="86" cy="88" r="3" fill="#FFFFFF"/>
+    </g>
+</svg>
