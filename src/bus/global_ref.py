@@ -1,4 +1,5 @@
 if None:
+    from PySide6.QtCore import QTranslator
     from PySide6.QtWidgets import QApplication
     from widget.main_window.main_window import MainWindow
     from util.toast_notifier import ToastNotifier
@@ -6,5 +7,7 @@ if None:
 
 class GlobalRef:
     app: 'QApplication'
+    translator: 'QTranslator'
+
     main_window: 'MainWindow'
     main_window_notifier: 'ToastNotifier'

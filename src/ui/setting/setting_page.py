@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'setting.ui'
+## Form generated from reading UI file 'setting_page.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.11.2
 ##
@@ -19,19 +19,19 @@ from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QGridLayout,
     QLabel, QScrollArea, QSizePolicy, QSpacerItem,
     QVBoxLayout, QWidget)
 
-class Ui_Setting(object):
-    def setupUi(self, Setting):
-        if not Setting.objectName():
-            Setting.setObjectName(u"Setting")
-        Setting.resize(400, 300)
-        self.verticalLayout = QVBoxLayout(Setting)
+class Ui_SettingPage(object):
+    def setupUi(self, SettingPage):
+        if not SettingPage.objectName():
+            SettingPage.setObjectName(u"SettingPage")
+        SettingPage.resize(482, 446)
+        self.verticalLayout = QVBoxLayout(SettingPage)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.scrollArea = QScrollArea(Setting)
+        self.scrollArea = QScrollArea(SettingPage)
         self.scrollArea.setObjectName(u"scrollArea")
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 378, 278))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 460, 424))
         self.verticalLayout_2 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_2.setSpacing(12)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
@@ -121,6 +121,40 @@ class Ui_Setting(object):
 
         self.verticalLayout_2.addWidget(self.frame_2)
 
+        self.frame_3 = QFrame(self.scrollAreaWidgetContents)
+        self.frame_3.setObjectName(u"frame_3")
+        self.frame_3.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame_3.setFrameShadow(QFrame.Shadow.Raised)
+        self.gridLayout_3 = QGridLayout(self.frame_3)
+        self.gridLayout_3.setObjectName(u"gridLayout_3")
+        self.gridLayout_3.setVerticalSpacing(4)
+        self.label_8 = QLabel(self.frame_3)
+        self.label_8.setObjectName(u"label_8")
+        self.label_8.setFont(font1)
+
+        self.gridLayout_3.addWidget(self.label_8, 0, 1, 1, 1)
+
+        self.language_select = QComboBox(self.frame_3)
+        self.language_select.setObjectName(u"language_select")
+
+        self.gridLayout_3.addWidget(self.language_select, 0, 2, 2, 1)
+
+        self.label_9 = QLabel(self.frame_3)
+        self.label_9.setObjectName(u"label_9")
+        self.label_9.setFont(font2)
+
+        self.gridLayout_3.addWidget(self.label_9, 1, 1, 1, 1)
+
+        self.language_icon = QLabel(self.frame_3)
+        self.language_icon.setObjectName(u"language_icon")
+
+        self.gridLayout_3.addWidget(self.language_icon, 0, 0, 2, 1)
+
+        self.gridLayout_3.setColumnStretch(1, 1)
+        self.gridLayout_3.setColumnMinimumWidth(0, 50)
+
+        self.verticalLayout_2.addWidget(self.frame_3)
+
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.verticalLayout_2.addItem(self.verticalSpacer)
@@ -130,20 +164,23 @@ class Ui_Setting(object):
         self.verticalLayout.addWidget(self.scrollArea)
 
 
-        self.retranslateUi(Setting)
+        self.retranslateUi(SettingPage)
 
-        QMetaObject.connectSlotsByName(Setting)
+        QMetaObject.connectSlotsByName(SettingPage)
     # setupUi
 
-    def retranslateUi(self, Setting):
-        Setting.setWindowTitle(QCoreApplication.translate("Setting", u"Form", None))
-        self.label.setText(QCoreApplication.translate("Setting", u"\u8bbe\u7f6e", None))
-        self.label_2.setText(QCoreApplication.translate("Setting", u"\u5916\u89c2", None))
-        self.label_3.setText(QCoreApplication.translate("Setting", u"\u63a7\u4ef6\u6837\u5f0f", None))
-        self.label_5.setText(QCoreApplication.translate("Setting", u"\u9009\u62e9\u754c\u9762\u7684\u5916\u89c2", None))
-        self.style_icon.setText(QCoreApplication.translate("Setting", u"icon", None))
-        self.label_6.setText(QCoreApplication.translate("Setting", u"\u5e94\u7528\u4e3b\u9898", None))
-        self.label_7.setText(QCoreApplication.translate("Setting", u"\u9009\u62e9\u6df1\u6d45\u989c\u8272\u4e3b\u9898", None))
-        self.theme_icon.setText(QCoreApplication.translate("Setting", u"icon", None))
+    def retranslateUi(self, SettingPage):
+        SettingPage.setWindowTitle(QCoreApplication.translate("SettingPage", u"Form", None))
+        self.label.setText(QCoreApplication.translate("SettingPage", u"\u8bbe\u7f6e", None))
+        self.label_2.setText(QCoreApplication.translate("SettingPage", u"\u5916\u89c2", None))
+        self.label_3.setText(QCoreApplication.translate("SettingPage", u"\u63a7\u4ef6\u6837\u5f0f", None))
+        self.label_5.setText(QCoreApplication.translate("SettingPage", u"\u9009\u62e9\u754c\u9762\u7684\u5916\u89c2", None))
+        self.style_icon.setText(QCoreApplication.translate("SettingPage", u"icon", None))
+        self.label_6.setText(QCoreApplication.translate("SettingPage", u"\u5e94\u7528\u4e3b\u9898", None))
+        self.label_7.setText(QCoreApplication.translate("SettingPage", u"\u9009\u62e9\u6df1\u6d45\u989c\u8272\u4e3b\u9898", None))
+        self.theme_icon.setText(QCoreApplication.translate("SettingPage", u"icon", None))
+        self.label_8.setText(QCoreApplication.translate("SettingPage", u"\u8bed\u8a00", None))
+        self.label_9.setText(QCoreApplication.translate("SettingPage", u"\u8bed\u8a00\u9009\u62e9", None))
+        self.language_icon.setText(QCoreApplication.translate("SettingPage", u"icon", None))
     # retranslateUi
 

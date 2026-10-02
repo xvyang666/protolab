@@ -30,12 +30,14 @@ async def main():
     from theme.theme_mode import ThemeMode
     from util.toast_notifier import ToastNotifier
     from bus.obj import theme
+    from util.language_enum import install_translator_helper
 
     PathConfig.init_create_dir()
     setting.load()
     theme.mode = setting.theme_mode
 
     GlobalRef.app.setStyle(setting.style)
+    install_translator_helper(GlobalRef.app, setting.language)
     GlobalRef.app.styleHints().setColorScheme(
         {
             ThemeMode.light: Qt.ColorScheme.Light,

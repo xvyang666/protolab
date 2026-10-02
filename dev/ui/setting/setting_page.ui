@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Setting</class>
- <widget class="QWidget" name="Setting">
+ <class>SettingPage</class>
+ <widget class="QWidget" name="SettingPage">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>482</width>
+    <height>446</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,8 +24,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>378</width>
-        <height>278</height>
+        <width>460</width>
+        <height>424</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -151,6 +151,55 @@
         </widget>
        </item>
        <item>
+        <widget class="QFrame" name="frame_3">
+         <property name="frameShape">
+          <enum>QFrame::Shape::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Shadow::Raised</enum>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_3" columnstretch="0,1,0" columnminimumwidth="50,0,0">
+          <property name="verticalSpacing">
+           <number>4</number>
+          </property>
+          <item row="0" column="1">
+           <widget class="QLabel" name="label_8">
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>语言</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2" rowspan="2">
+           <widget class="QComboBox" name="language_select"/>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLabel" name="label_9">
+            <property name="font">
+             <font>
+              <pointsize>8</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>语言选择</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" rowspan="2">
+           <widget class="QLabel" name="language_icon">
+            <property name="text">
+             <string>icon</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Orientation::Vertical</enum>
@@ -172,5 +221,3 @@
  <resources/>
  <connections/>
 </ui>
-
-

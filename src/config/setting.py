@@ -4,6 +4,7 @@ from config.path_config import PathConfig
 from model.SerialConnConfig import SerialConnConfig
 from model.SerialSendConfig import SerialSendConfig
 from theme.theme_mode import ThemeMode
+from util.language_enum import LanguageEnum
 
 
 class _MainWindowLoc(BaseModel):
@@ -16,6 +17,8 @@ class _MainWindowLoc(BaseModel):
 class _Setting(BaseModel):
     style: str = 'fusion'
     theme_mode: ThemeMode = ThemeMode.light
+    language: LanguageEnum = LanguageEnum.zh_CN
+
     main_window_loc: _MainWindowLoc = _MainWindowLoc()
 
     serial_baud_rate_list: list[int] = [9600, 19200, 38400, 57600, 115200]

@@ -2,28 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="106e9ab2-7a6d-41f5-abfe-a7269c761370" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/dev/test/toast.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/icon/dark/errorDialog.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/icon/dark/informationDialog.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/icon/dark/successDialog.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/icon/dark/warningDialog.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/icon/light/app-icon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/icon/light/errorDialog.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/icon/light/informationDialog.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/icon/light/successDialog.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/res/icon/light/warningDialog.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/util/toast_notifier.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/tool/translate_gen_ts.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/locales/qtbase_en.qm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/res/locales/qtbase_zh_CN.qm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/util/language_enum.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/ui/serial/serial_page.ui" beforeDir="false" afterPath="$PROJECT_DIR$/dev/ui/serial/serial_page.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/ui/setting/setting.ui" beforeDir="false" afterPath="$PROJECT_DIR$/dev/ui/setting/setting_page.ui" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/bus/global_ref.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bus/global_ref.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/res_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/res_config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/setting.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/setting.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/theme/color.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme/color.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/theme/icon.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme/icon.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/theme/t.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme/t.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ui/serial/serial_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/serial/serial_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widget/main_window/main_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/widget/main_window/main_window.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widget/serial/serial_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/widget/serial/serial_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/widget/serial/serial_panel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/widget/serial/serial_panel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/serial/serial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/setting/setting.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widget/setting/setting_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/widget/setting/setting_page.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +63,7 @@
     "Python.gen_icon_define.executor": "Run",
     "Python.gen_res_and_icon_code (1).executor": "Run",
     "Python.gen_res_code (1).executor": "Run",
+    "Python.gen_res_code.executor": "Run",
     "Python.icon.executor": "Run",
     "Python.icon_config.executor": "Run",
     "Python.main.executor": "Run",
@@ -80,7 +73,9 @@
     "Python.serial_asyncio_com10.executor": "Run",
     "Python.serial_asyncio_com11.executor": "Run",
     "Python.serial_asyncio_test.executor": "Run",
+    "Python.tab.executor": "Run",
     "Python.toast.executor": "Run",
+    "Python.translate_gen_ts.executor": "Run",
     "Python.util.executor": "Run",
     "Python.数据显示示例.executor": "Run",
     "Python.深浅色调色板对比 (1).executor": "Run",
@@ -93,10 +88,12 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "last_opened_file_path": "D:/dev/protolab/res/icon/light",
+    "jsx.switch.disabled": "true",
+    "last_opened_file_path": "D:/dev/protolab/res/locales",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "aDefault",
     "settings.editor.selected.configurable": "watcher.settings",
+    "ts.external.directory.path": "D:\\tool\\jetbrains\\pycharm-2026.1.5.win\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -105,18 +102,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\dev\protolab\res\locales" />
       <recent name="D:\dev\protolab\res\icon\light" />
       <recent name="D:\dev\protolab\res\icon\dark" />
       <recent name="D:\dev\protolab\src\model" />
       <recent name="D:\dev\protolab\src\widget\serial" />
-      <recent name="D:\dev\protolab\dev\test" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\dev\protolab\res" />
+      <recent name="D:\dev\protolab\res\locales" />
       <recent name="D:\dev\protolab\src\util" />
       <recent name="D:\dev\protolab\src\theme" />
-      <recent name="D:\dev\protolab\res" />
       <recent name="D:\dev\protolab\dev\ui\main_window" />
-      <recent name="D:\dev\protolab\src\widget\main_window" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -141,8 +138,11 @@
         <entry key="PythonConfigurationType">
           <value>
             <map>
+              <entry key="gen_res_code" value="STOPPED" />
               <entry key="main" value="STOPPED" />
+              <entry key="tab" value="FAILED" />
               <entry key="toast" value="STOPPED" />
+              <entry key="translate_gen_ts" value="STOPPED" />
             </map>
           </value>
         </entry>
@@ -240,8 +240,33 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="DEBUG_JUST_MY_CODE" value="false" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="RUN_TOOL" value="" />
+      <option name="RUN_TOOL" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tab" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="protolab" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dev/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="false" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dev/test/tab.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -275,13 +300,44 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="translate_gen_ts" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="protolab" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dev/tool" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="false" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dev/tool/translate_gen_ts.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
+      <item itemvalue="Python.gen_res_code" />
+      <item itemvalue="Python.translate_gen_ts" />
+      <item itemvalue="Python.数据显示示例" />
+      <item itemvalue="Python.tab" />
       <item itemvalue="Python.main" />
       <item itemvalue="Python.toast" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.translate_gen_ts" />
+        <item itemvalue="Python.tab" />
         <item itemvalue="Python.toast" />
       </list>
     </recent_temporary>
@@ -295,6 +351,7 @@
       <updated>1789739063237</updated>
       <workItem from="1789739064484" duration="58384000" />
       <workItem from="1790595474175" duration="57302000" />
+      <workItem from="1790943609108" duration="10143000" />
     </task>
     <servers />
   </component>
@@ -304,11 +361,14 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/protolab$qss.coverage" NAME="qss 覆盖结果" MODIFIED="1789749673945" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/test" />
     <SUITE FILE_PATH="coverage/protolab$obj.coverage" NAME="obj 覆盖结果" MODIFIED="1790004238303" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/bus" />
-    <SUITE FILE_PATH="coverage/protolab$main.coverage" NAME="main 覆盖结果" MODIFIED="1790942374650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/protolab$main.coverage" NAME="main 覆盖结果" MODIFIED="1790957746961" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/protolab$tab.coverage" NAME="tab 覆盖结果" MODIFIED="1790943756001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/test" />
     <SUITE FILE_PATH="coverage/protolab$gen_res_and_icon_code__1_.coverage" NAME="gen_res_and_icon_code (1) 覆盖结果" MODIFIED="1789820081445" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/tool" />
+    <SUITE FILE_PATH="coverage/protolab$translate_gen_ts.coverage" NAME="translate_gen_ts 覆盖结果" MODIFIED="1790957445628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/tool" />
     <SUITE FILE_PATH="coverage/protolab$gen_res_code__1_.coverage" NAME="gen_res_code (1) 覆盖结果" MODIFIED="1789825816013" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/tool" />
     <SUITE FILE_PATH="coverage/protolab$serial_asyncio_com10__1_.coverage" NAME="serial_asyncio_com10 覆盖结果" MODIFIED="1790669138874" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/test" />
     <SUITE FILE_PATH="coverage/protolab$toast.coverage" NAME="toast 覆盖结果" MODIFIED="1790938669351" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/test" />
+    <SUITE FILE_PATH="coverage/protolab$gen_res_code.coverage" NAME="gen_res_code 覆盖结果" MODIFIED="1790957450165" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/tool" />
     <SUITE FILE_PATH="coverage/protolab$util.coverage" NAME="util 覆盖结果" MODIFIED="1790004155899" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/theme" />
     <SUITE FILE_PATH="coverage/protolab$__1_.coverage" NAME="深浅色调色板对比 (1) 覆盖结果" MODIFIED="1789825605060" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/test" />
     <SUITE FILE_PATH="coverage/protolab$icon_config.coverage" NAME="icon_config 覆盖结果" MODIFIED="1789793324740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/config" />
