@@ -38,7 +38,7 @@ class _GreyScale(BaseModel):
     a700: str = "#616161"
 
 
-class _ColorVariant(BaseModel):
+class ColorVariant(BaseModel):
     main: str
     light: str
     dark: str
@@ -74,12 +74,12 @@ class BaseColor(BaseModel):
     common: _CommonColor = _CommonColor()
     grey: _GreyScale = _GreyScale()
 
-    primary: _ColorVariant
-    secondary: _ColorVariant
-    error: _ColorVariant
-    warning: _ColorVariant
-    info: _ColorVariant
-    success: _ColorVariant
+    primary: ColorVariant
+    secondary: ColorVariant
+    error: ColorVariant
+    warning: ColorVariant
+    info: ColorVariant
+    success: ColorVariant
     divider: str
     background: _BackgroundColor
     text: _TextColor
@@ -87,12 +87,12 @@ class BaseColor(BaseModel):
 
 
 class _LightColor(BaseColor):
-    primary: _ColorVariant = _ColorVariant(main="#1976d2", light="#42a5f5", dark="#1565c0", contrastText="#ffffff")
-    secondary: _ColorVariant = _ColorVariant(main="#9c27b0", light="#ba68c8", dark="#7b1fa2", contrastText="#ffffff")
-    error: _ColorVariant = _ColorVariant(main="#d32f2f", light="#ef5350", dark="#c62828", contrastText="#ffffff")
-    warning: _ColorVariant = _ColorVariant(main="#ed6c02", light="#ff9800", dark="#e65100", contrastText="#ffffff")
-    info: _ColorVariant = _ColorVariant(main="#0288d1", light="#03a9f4", dark="#01579b", contrastText="#ffffff")
-    success: _ColorVariant = _ColorVariant(main="#2e7d32", light="#4caf50", dark="#1b5e20", contrastText="#ffffff")
+    primary: ColorVariant = ColorVariant(main="#1976d2", light="#42a5f5", dark="#1565c0", contrastText="#ffffff")
+    secondary: ColorVariant = ColorVariant(main="#9c27b0", light="#ba68c8", dark="#7b1fa2", contrastText="#ffffff")
+    error: ColorVariant = ColorVariant(main="#d32f2f", light="#ef5350", dark="#c62828", contrastText="#ffffff")
+    warning: ColorVariant = ColorVariant(main="#ed6c02", light="#ff9800", dark="#e65100", contrastText="#ffffff")
+    info: ColorVariant = ColorVariant(main="#0288d1", light="#03a9f4", dark="#01579b", contrastText="#ffffff")
+    success: ColorVariant = ColorVariant(main="#2e7d32", light="#4caf50", dark="#1b5e20", contrastText="#ffffff")
     divider: str = "#1F000000"
     background: _BackgroundColor = _BackgroundColor(paper="#ffffff", default="#ffffff")
     text: _TextColor = _TextColor(
@@ -116,12 +116,12 @@ class _LightColor(BaseColor):
 
 
 class _DarkColor(BaseColor):
-    primary: _ColorVariant = _ColorVariant(main="#90caf9", light="#e3f2fd", dark="#42a5f5", contrastText="#DF000000")
-    secondary: _ColorVariant = _ColorVariant(main="#ce93d8", light="#f3e5f5", dark="#ab47bc", contrastText="#DF000000")
-    error: _ColorVariant = _ColorVariant(main="#f44336", light="#e57373", dark="#d32f2f", contrastText="#ffffff")
-    warning: _ColorVariant = _ColorVariant(main="#ffa726", light="#ffb74d", dark="#f57c00", contrastText="#DF000000")
-    info: _ColorVariant = _ColorVariant(main="#29b6f6", light="#4fc3f7", dark="#0288d1", contrastText="#DF000000")
-    success: _ColorVariant = _ColorVariant(main="#66bb6a", light="#81c784", dark="#388e3c", contrastText="#DF000000")
+    primary: ColorVariant = ColorVariant(main="#90caf9", light="#e3f2fd", dark="#42a5f5", contrastText="#DF000000")
+    secondary: ColorVariant = ColorVariant(main="#ce93d8", light="#f3e5f5", dark="#ab47bc", contrastText="#DF000000")
+    error: ColorVariant = ColorVariant(main="#f44336", light="#e57373", dark="#d32f2f", contrastText="#ffffff")
+    warning: ColorVariant = ColorVariant(main="#ffa726", light="#ffb74d", dark="#f57c00", contrastText="#DF000000")
+    info: ColorVariant = ColorVariant(main="#29b6f6", light="#4fc3f7", dark="#0288d1", contrastText="#DF000000")
+    success: ColorVariant = ColorVariant(main="#66bb6a", light="#81c784", dark="#388e3c", contrastText="#DF000000")
     divider: str = "#1FFFFFFF"
     background: _BackgroundColor = _BackgroundColor(paper="#333333", default="#212121")
     text: _TextColor = _TextColor(

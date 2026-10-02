@@ -22,6 +22,8 @@ class SerialPage(QWidget):
         self.ui.refresh_btn.setIcon(theme.get_icon(Icon.refresh))
 
         self.ui.com_list.currentItemChanged.connect(self.select_panel)
+        self.ui.tabWidget.currentChanged.connect(self.select_item_by_tab)
+        self.ui.tabWidget.tabCloseRequested.connect(self.close_tab)
         self.ui.refresh_btn.clicked.connect(lambda: asyncio.create_task(self.refresh_com_list()))
 
         self.panel_map: dict[str, SerialPanel] = {}
@@ -84,6 +86,36 @@ class SerialPage(QWidget):
         if not panel:
             panel = SerialPanel(self, name)
             self.panel_map[name] = panel
-            self.ui.stackedWidget.addWidget(panel)
+            self.ui.tabWidget.addTab(panel, name)
 
-        self.ui.stackedWidget.setCurrentWidget(panel)
+        self.ui.tabWidget.setCurrentWidget(panel)
+
+    def select_item_by_tab(self, index: int):
+        if index < 0:
+            return
+
+        current_widget: SerialPanel = self.ui.tabWidget.widget(index)
+
+        # 遍历 com_list 匹配对应的 item
+        for i in range(self.ui.com_list.count()):
+            item = self.ui.com_list.item(i)
+
+            if item.data(Qt.ItemDataRole.UserRole) == current_widget.name:
+                self.ui.com_list.blockSignals(True)
+                self.ui.com_list.setCurrentItem(item)
+                self.ui.com_list.blockSignals(False)
+                break
+
+    def close_tab(self, index: int):
+        if index < 0:
+            return
+
+        current_widget: SerialPanel = self.ui.tabWidget.widget(index)
+        self.panel_map.pop(current_widget.name)
+        current_widget.deleteLater()
+
+        list_item = self.ui.com_list.currentItem()
+        if list_item.data(Qt.ItemDataRole.UserRole) == current_widget.name:
+            self.ui.com_list.blockSignals(True)
+            self.ui.com_list.setCurrentItem(None)
+            self.ui.com_list.blockSignals(False)

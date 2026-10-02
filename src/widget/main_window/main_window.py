@@ -53,7 +53,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle(self.tr('protolab'))
-        self.setWindowIcon(theme.get_icon(Icon.palette))
+        self.setWindowIcon(theme.get_icon(Icon.app_icon))
         self.stacked_widget: QStackedWidget = QStackedWidget(self)
         self.setCentralWidget(self.stacked_widget)
 

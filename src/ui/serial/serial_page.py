@@ -17,7 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QHBoxLayout, QListWidget, QListWidgetItem,
     QPushButton, QSizePolicy, QSpacerItem, QSplitter,
-    QStackedWidget, QVBoxLayout, QWidget)
+    QTabWidget, QVBoxLayout, QWidget)
 
 class Ui_SerialPage(object):
     def setupUi(self, SerialPage):
@@ -62,9 +62,15 @@ class Ui_SerialPage(object):
         self.verticalLayout.addWidget(self.com_list)
 
         self.splitter.addWidget(self.widget)
-        self.stackedWidget = QStackedWidget(self.splitter)
-        self.stackedWidget.setObjectName(u"stackedWidget")
-        self.splitter.addWidget(self.stackedWidget)
+        self.tabWidget = QTabWidget(self.splitter)
+        self.tabWidget.setObjectName(u"tabWidget")
+        self.tabWidget.setElideMode(Qt.TextElideMode.ElideNone)
+        self.tabWidget.setUsesScrollButtons(True)
+        self.tabWidget.setDocumentMode(False)
+        self.tabWidget.setTabsClosable(True)
+        self.tabWidget.setMovable(True)
+        self.tabWidget.setTabBarAutoHide(False)
+        self.splitter.addWidget(self.tabWidget)
 
         self.verticalLayout_2.addWidget(self.splitter)
 

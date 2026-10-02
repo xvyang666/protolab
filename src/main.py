@@ -28,21 +28,25 @@ async def main():
     from config.path_config import PathConfig
     from bus.global_ref import GlobalRef
     from theme.theme_mode import ThemeMode
+    from util.toast_notifier import ToastNotifier
+    from bus.obj import theme
 
     PathConfig.init_create_dir()
     setting.load()
+    theme.mode = setting.theme_mode
 
-    app.setStyle(setting.style)
+    GlobalRef.app.setStyle(setting.style)
+    GlobalRef.app.styleHints().setColorScheme(
+        {
+            ThemeMode.light: Qt.ColorScheme.Light,
+            ThemeMode.dark: Qt.ColorScheme.Dark,
+        }[setting.theme_mode]
+    )
 
-    _map: dict[ThemeMode, Qt.ColorScheme] = {
-        ThemeMode.light: Qt.ColorScheme.Light,
-        ThemeMode.dark: Qt.ColorScheme.Dark,
-    }
-    app.styleHints().setColorScheme(_map[setting.theme_mode])
-
-    window = MainWindow()
-    GlobalRef.main_window = window
+    window = GlobalRef.main_window = MainWindow()
     window.show()
+
+    GlobalRef.main_window_notifier = ToastNotifier(window)
 
 
 if __name__ == "__main__":
@@ -53,7 +57,6 @@ if __name__ == "__main__":
     from PySide6 import QtAsyncio
     from bus.global_ref import GlobalRef
 
-    app = QApplication(sys.argv)
-    GlobalRef.app = app
+    GlobalRef.app = QApplication(sys.argv)
 
     QtAsyncio.run(main())

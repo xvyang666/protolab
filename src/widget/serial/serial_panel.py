@@ -2,6 +2,7 @@ from PySide6.QtCore import QTimer
 from PySide6.QtSerialPort import QSerialPort
 from PySide6.QtWidgets import QWidget, QAbstractButton, QRadioButton
 
+from bus.global_ref import GlobalRef
 from bus.obj import theme
 from bus.serial_conn_manage import serial_conn_manage
 from config.setting import setting
@@ -101,7 +102,11 @@ class SerialPanel(QWidget):
         if self.send_cfg.send_mode == SerialSendConfig.SendMode.str:
             data = src_text.encode()
         elif self.send_cfg.send_mode == SerialSendConfig.SendMode.hex:
-            data = bytes.fromhex(src_text)
+            try:
+                data = bytes.fromhex(src_text)
+            except:
+                GlobalRef.main_window_notifier.warning(self.tr('请输入有效的 hex 数据'))
+                return
         else:
             raise ValueError
 
@@ -118,3 +123,8 @@ class SerialPanel(QWidget):
 
         if self.conn:
             self.conn.write(data)
+        else:
+            GlobalRef.main_window_notifier.warning(self.tr('串口 {} 未连接').format(self.name))
+            return
+
+        self.ui.input.setPlainText('')

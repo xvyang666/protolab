@@ -7,9 +7,12 @@ class IconEnum(Enum):
 
 
 class Icon(IconEnum):
+    app_icon = 'app-icon.svg'
     code_assistant_protocol = 'codeAssistantProtocol.svg'
     edit = 'edit.svg'
     enable_dot = 'enable_dot.svg'
+    error_dialog = 'errorDialog.svg'
+    information_dialog = 'informationDialog.svg'
     modbus = 'modbus.svg'
     mqtt = 'mqtt.svg'
     palette = 'palette.svg'
@@ -19,7 +22,9 @@ class Icon(IconEnum):
     serial = 'serial.svg'
     settings = 'settings.svg'
     stop = 'stop.svg'
+    success_dialog = 'successDialog.svg'
     system_theme_selected = 'systemThemeSelected.svg'
     tcp = 'tcp.svg'
     udp = 'udp.svg'
     unable_dot = 'unable_dot.svg'
+    warning_dialog = 'warningDialog.svg'
