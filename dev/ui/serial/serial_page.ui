@@ -79,7 +79,14 @@
         </layout>
        </item>
        <item>
-        <widget class="QListWidget" name="com_list"/>
+        <widget class="QListWidget" name="com_list">
+         <property name="verticalScrollMode">
+          <enum>QAbstractItemView::ScrollMode::ScrollPerPixel</enum>
+         </property>
+         <property name="horizontalScrollMode">
+          <enum>QAbstractItemView::ScrollMode::ScrollPerPixel</enum>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>

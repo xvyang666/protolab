@@ -1,7 +1,10 @@
+import asyncio
+
 from PySide6.QtCore import Signal
 from PySide6.QtSerialPort import QSerialPort
 from PySide6.QtWidgets import QWidget, QMessageBox
 
+from bus.global_ref import GlobalRef
 from bus.obj import theme
 from bus.serial_conn_manage import serial_conn_manage
 from config.setting import setting
@@ -36,33 +39,49 @@ class SerialItem(QWidget):
         self.refresh_conn_state(name, serial_conn_manage.is_open(name))
         self.refresh_detail_label()
 
-        self.ui.run_or_stop_btn.clicked.connect(self.连接_or_断连)
+        self.ui.run_or_stop_btn.clicked.connect(lambda: asyncio.create_task(self.连接_or_断连()))
         self.ui.setting_btn.clicked.connect(self.setting_btn_clicked)
 
         serial_conn_manage.conn_changed_signal.connect(self.refresh_conn_state)
 
-    def 连接_or_断连(self):
+    async def 连接_or_断连(self):
+        self.ui.run_or_stop_btn.setEnabled(False)
+
         if serial_conn_manage.is_open(self.name):
             serial_conn_manage.close_conn(self.name)
 
         else:
-            conn = QSerialPort(
-                self.cfg.name,
-                baudRate=self.cfg.baud_rate,
-                dataBits=self.cfg.data_bit,
-                stopBits=self.cfg.stop_bit,
-                parity=self.cfg.parity,
-            )
+            main_thread = GlobalRef.app.thread()
 
-            ok = conn.open(QSerialPort.OpenModeFlag.ReadWrite)
-            if not ok:
+            def _create_and_open():
+                # 由于 open 是阻塞操作, 这里在子线程中创建 QSerialPort
+                # 但后续的 read/write 逻辑直接在主线程调用的, 这个跨线程使用会有bug, 这里创建并连接后再移交到主线程
+                _conn = QSerialPort(
+                    self.cfg.name,
+                    baudRate=self.cfg.baud_rate,
+                    dataBits=self.cfg.data_bit,
+                    stopBits=self.cfg.stop_bit,
+                    parity=self.cfg.parity,
+                )
+
+                ok = _conn.open(QSerialPort.OpenModeFlag.ReadWrite)
+                if not ok:
+                    return None
+
+                _conn.moveToThread(main_thread)
+                return _conn
+
+            conn = await asyncio.to_thread(_create_and_open)
+            if not conn:
                 QMessageBox.warning(self, self.tr('连接失败'), self.tr('串口 {} 连接失败, 请刷新串口列表或检查是否被占用').format(self.cfg.name))
                 return
 
             serial_conn_manage.add_conn(self.cfg.name, conn)
 
+        self.ui.run_or_stop_btn.setEnabled(True)
+
     def refresh_detail_label(self):
-        self.ui.detal_label.setText(f'{self.cfg.baud_rate}/{_DATA_BITS_text[self.cfg.data_bit]}/{_STOP_BITS_text[self.cfg.stop_bit]}/{_PARITY_text[self.cfg.parity]}')
+        self.ui.detal_label.setText(f'{self.cfg.baud_rate} / {_DATA_BITS_text[self.cfg.data_bit]} / {_STOP_BITS_text[self.cfg.stop_bit]} / {_PARITY_text[self.cfg.parity]}')
 
     def refresh_conn_state(self, name: str, conned: bool):
         if name != self.cfg.name:

@@ -15,9 +15,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QHBoxLayout, QListWidget, QListWidgetItem,
-    QPushButton, QSizePolicy, QSpacerItem, QSplitter,
-    QTabWidget, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QAbstractItemView, QApplication, QHBoxLayout, QListWidget,
+    QListWidgetItem, QPushButton, QSizePolicy, QSpacerItem,
+    QSplitter, QTabWidget, QVBoxLayout, QWidget)
 
 class Ui_SerialPage(object):
     def setupUi(self, SerialPage):
@@ -58,6 +58,8 @@ class Ui_SerialPage(object):
 
         self.com_list = QListWidget(self.widget)
         self.com_list.setObjectName(u"com_list")
+        self.com_list.setVerticalScrollMode(QAbstractItemView.ScrollMode.ScrollPerPixel)
+        self.com_list.setHorizontalScrollMode(QAbstractItemView.ScrollMode.ScrollPerPixel)
 
         self.verticalLayout.addWidget(self.com_list)
 

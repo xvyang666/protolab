@@ -52,15 +52,20 @@ class SerialPanel(QWidget):
         append_mode_value_to_ui = {v: k for k, v in self.append_mode_ui_to_value.items()}
         append_mode_value_to_ui[self.send_cfg.append_mode].setChecked(True)
 
-        serial_conn_manage.conn_changed_signal.connect(self.refresh_self_conn)
-        self.ui.radio_btn_group_append_mode.buttonClicked.connect(self.append_mode_changed)
-        self.ui.radio_btn_group_send_mode.buttonClicked.connect(self.send_mode_changed)
-        self.ui.send_btn.clicked.connect(self.send_data)
+        serial_conn_manage.conn_changed_signal.connect(self.串口管理器状态变化)
+        self.ui.radio_btn_group_append_mode.buttonClicked.connect(self.追加模式变化)
+        self.ui.radio_btn_group_send_mode.buttonClicked.connect(self.发送模式变化)
+        self.ui.send_btn.clicked.connect(self.发送按钮被点击)
 
-    def refresh_self_conn(self, name: str, _conned: bool):
+        self.初始化连接()
+
+    def 串口管理器状态变化(self, name: str, _conned: bool):
         if name != self.name:
             return
 
+        self.初始化连接()
+
+    def 初始化连接(self):
         self.conn = serial_conn_manage.get_conn(self.name)
         if not self.conn:
             return
@@ -86,17 +91,17 @@ class SerialPanel(QWidget):
 
         self.ui.textBrowser.append(data.hex(' '))
 
-    def append_mode_changed(self, btn: QAbstractButton):
+    def 追加模式变化(self, btn: QAbstractButton):
         assert isinstance(btn, QRadioButton)
         self.send_cfg.append_mode = self.append_mode_ui_to_value[btn]
         setting.serial_send_config[self.name] = self.send_cfg
 
-    def send_mode_changed(self, btn: QAbstractButton):
+    def 发送模式变化(self, btn: QAbstractButton):
         assert isinstance(btn, QRadioButton)
         self.send_cfg.send_mode = self.send_mode_ui_to_value[btn]
         setting.serial_send_config[self.name] = self.send_cfg
 
-    def send_data(self):
+    def 发送按钮被点击(self):
         src_text = self.ui.input.toPlainText()
 
         if self.send_cfg.send_mode == SerialSendConfig.SendMode.str:

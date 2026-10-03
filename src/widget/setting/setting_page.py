@@ -17,7 +17,8 @@ class SettingPage(QDialog):
         self.ui = Ui_SettingPage()
         self.ui.setupUi(self)
         self.ui.style_icon.setPixmap(theme.get_icon(Icon.palette).pixmap(24, 24))
-        self.ui.theme_icon.setPixmap(theme.get_icon(Icon.system_theme_selected).pixmap(24, 24))
+        self.ui.theme_icon.setPixmap(theme.get_icon(Icon.system_theme).pixmap(24, 24))
+        self.ui.language_icon.setPixmap(theme.get_icon(Icon.language).pixmap(24, 24))
 
         self.setWindowTitle(self.tr('设置'))
 

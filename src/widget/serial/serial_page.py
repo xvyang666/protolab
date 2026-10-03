@@ -6,6 +6,7 @@ from PySide6.QtSerialPort import QSerialPortInfo
 from PySide6.QtWidgets import QWidget, QListWidgetItem
 
 from bus.obj import theme, logger
+from bus.serial_conn_manage import serial_conn_manage
 from theme.icon import Icon
 from ui.serial.serial_page import Ui_SerialPage
 from widget.serial.serial_item import SerialItem
@@ -21,16 +22,18 @@ class SerialPage(QWidget):
         self.ui.splitter.setStretchFactor(1, 1)
         self.ui.refresh_btn.setIcon(theme.get_icon(Icon.refresh))
 
-        self.ui.com_list.currentItemChanged.connect(self.select_panel)
-        self.ui.tabWidget.currentChanged.connect(self.select_item_by_tab)
-        self.ui.tabWidget.tabCloseRequested.connect(self.close_tab)
-        self.ui.refresh_btn.clicked.connect(lambda: asyncio.create_task(self.refresh_com_list()))
+        self.ui.com_list.currentItemChanged.connect(self.串口列表的选中项变化)
+        self.ui.tabWidget.currentChanged.connect(self.串口面板tab选中项变化)
+        self.ui.tabWidget.tabCloseRequested.connect(self.串口面板tab页关闭)
+        self.ui.refresh_btn.clicked.connect(lambda: asyncio.create_task(self.刷新串口列表()))
 
         self.panel_map: dict[str, SerialPanel] = {}
 
-        asyncio.create_task(self.refresh_com_list())
+        asyncio.create_task(self.刷新串口列表())
 
-    async def refresh_com_list(self):
+        serial_conn_manage.conn_changed_signal.connect(self.串口管理器变化)
+
+    async def 刷新串口列表(self):
         self.ui.refresh_btn.setEnabled(False)
 
         try:
@@ -80,8 +83,18 @@ class SerialPage(QWidget):
 
         self.ui.refresh_btn.setEnabled(True)
 
-    def select_panel(self, item: QListWidgetItem):
+    def 串口列表的选中项变化(self, item: QListWidgetItem):
+        if item is None:
+            return
+
         name: str = item.data(Qt.ItemDataRole.UserRole)
+        self.创建串口面板并选中(name)
+
+    def 串口管理器变化(self, name: str, _conned: bool):
+        if _conned:
+            self.创建串口面板并选中(name)
+
+    def 创建串口面板并选中(self, name: str):
         panel = self.panel_map.get(name)
         if not panel:
             panel = SerialPanel(self, name)
@@ -90,13 +103,13 @@ class SerialPage(QWidget):
 
         self.ui.tabWidget.setCurrentWidget(panel)
 
-    def select_item_by_tab(self, index: int):
+    def 串口面板tab选中项变化(self, index: int):
         if index < 0:
             return
 
         current_widget: SerialPanel = self.ui.tabWidget.widget(index)
 
-        # 遍历 com_list 匹配对应的 item
+        # 遍历 com_list 匹配对应的 item, 反向选中 列表, 保持两边的同步
         for i in range(self.ui.com_list.count()):
             item = self.ui.com_list.item(i)
 
@@ -106,7 +119,7 @@ class SerialPage(QWidget):
                 self.ui.com_list.blockSignals(False)
                 break
 
-    def close_tab(self, index: int):
+    def 串口面板tab页关闭(self, index: int):
         if index < 0:
             return
 
