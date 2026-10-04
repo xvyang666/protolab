@@ -1,8 +1,8 @@
 from PySide6.QtCore import Qt
-from PySide6.QtWidgets import QTextEdit
+from PySide6.QtWidgets import QPlainTextEdit
 
 
-class ReadOnlyTextEdit(QTextEdit):
+class ReadOnlyTextEdit(QPlainTextEdit):
     """
     可显示闪烁光标、拦截任何修改并弹出 ToolTip 提示的 QTextEdit
     """

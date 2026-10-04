@@ -20,7 +20,7 @@ if __name__ == "__main__":
     btn_in = QPushButton("从外部添加 IN 数据")
     btn_out = QPushButton("从外部添加 OUT 数据")
 
-    btn_in.clicked.connect(lambda: hex_view.append_row(HexViewRowData(datetime.now(timezone.utc), b"\x00\x20\x326\n66" * 5, HexViewDirection.RX)))
+    btn_in.clicked.connect(lambda: hex_view.append_row(HexViewRowData(datetime.now(timezone.utc), b"\x00\x20\x326\n66" * 1024, HexViewDirection.RX)))
     btn_out.clicked.connect(lambda: hex_view.append_row(HexViewRowData(datetime.now(timezone.utc), b"A1 B2 C3", HexViewDirection.TX)))
     layout.addWidget(btn_in)
     layout.addWidget(btn_out)

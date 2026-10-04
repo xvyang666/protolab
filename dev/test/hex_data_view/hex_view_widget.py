@@ -2,7 +2,7 @@ from PySide6.QtCore import Qt, QItemSelection
 from PySide6.QtGui import QFontDatabase, QTextCursor
 from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QToolBar, QTableView,
-    QStyleFactory, QSplitter, QLabel, QTextEdit
+    QStyleFactory, QSplitter, QLabel, QPlainTextEdit
 )
 
 from dev.test.hex_data_view.hex_view_delegate import HexViewDelegate
@@ -50,12 +50,13 @@ class HexViewWidget(QWidget):
 
         hex_header_layout = QHBoxLayout()
         hex_header_layout.addWidget(QLabel("Hex"))
-        self.hex_count_label = QLabel()
+        self.hex_count_label = QLabel(self)
         hex_header_layout.addWidget(self.hex_count_label)
+        hex_header_layout.addStretch()
         hex_container.addLayout(hex_header_layout)
 
         self.hex_edit = ReadOnlyTextEdit(self)
-        self.hex_edit.setLineWrapMode(QTextEdit.LineWrapMode.NoWrap)  # 禁止自动换行
+        self.hex_edit.setLineWrapMode(QPlainTextEdit.LineWrapMode.NoWrap)  # 禁止自动换行
         hex_container.addWidget(self.hex_edit)
 
         # ASCII 区域
@@ -64,7 +65,7 @@ class HexViewWidget(QWidget):
         ascii_container.setContentsMargins(0, 0, 0, 0)
         ascii_container.addWidget(QLabel("Ascii"))
         self.ascii_edit = ReadOnlyTextEdit(self)
-        self.ascii_edit.setLineWrapMode(QTextEdit.LineWrapMode.NoWrap)  # 禁止自动换行
+        self.ascii_edit.setLineWrapMode(QPlainTextEdit.LineWrapMode.NoWrap)  # 禁止自动换行
         ascii_container.addWidget(self.ascii_edit)
 
         # 设置等宽字体
@@ -73,11 +74,9 @@ class HexViewWidget(QWidget):
         self.hex_edit.setFont(monospace_font)
         self.ascii_edit.setFont(monospace_font)
 
-        # 下方左右按 1:1 均分空间
         bottom_splitter.addWidget(hex_widget)
         bottom_splitter.addWidget(ascii_widget)
-        bottom_splitter.setStretchFactor(0, 1)
-        bottom_splitter.setStretchFactor(1, 1)
+        bottom_splitter.setSizes([300, 120])
 
         # 3. 整体布局: 垂直 QSplitter (上方为 TableView，下方为 bottom_splitter)
         main_splitter = QSplitter(Qt.Orientation.Vertical)
@@ -87,7 +86,7 @@ class HexViewWidget(QWidget):
         main_splitter.addWidget(bottom_splitter)
 
         # 比例拉伸设置: index 0 (table_view) 占比最大，index 1 (bottom_splitter) 占比小
-        main_splitter.setStretchFactor(0, 4)
+        main_splitter.setStretchFactor(0, 2**10)
         main_splitter.setStretchFactor(1, 1)
 
         main_layout.addWidget(main_splitter)
@@ -204,14 +203,6 @@ class HexViewWidget(QWidget):
         tmp_cursor.setPosition(sel_end)
         end_row = tmp_cursor.blockNumber()
         end_col = tmp_cursor.positionInBlock()
-        #
-        # # 如果开始时选中的第一个字符是空格, 向后一个位置才开始计算
-        # if (start_col + 1) % 3 == 0:
-        #     start_col += 1
-        #
-        # # 如果结束时摸到下一个字节范围, 直接 +3 以全算
-        # if end_col % 3 != 0:
-        #     end_col += 3
 
         ascii_start_pos_in_block = start_col * 3
         ascii_end_pos_in_block = end_col * 3 - 1
