@@ -2,7 +2,7 @@ from enum import Enum
 
 from PySide6.QtCore import (
     Qt, QTimer, QPropertyAnimation, QParallelAnimationGroup, QPoint, QEvent,
-    QObject, Signal
+    QObject, Signal, QSize
 )
 from PySide6.QtWidgets import (
     QWidget, QLabel, QHBoxLayout, QPushButton, QFrame, QVBoxLayout, QGraphicsOpacityEffect
@@ -47,7 +47,7 @@ class _ToastItem(QFrame):
             parent: QWidget,
             text: str,
             level: Level,
-            duration: int = 3000,
+            duration: int = 5000,
     ):
         super().__init__(parent)
         self.text = text
@@ -58,10 +58,15 @@ class _ToastItem(QFrame):
         self.setGraphicsEffect(self.opacity_effect)
         self.opacity_effect.setOpacity(0.0)
 
+        self.timer = QTimer(self)
+        self.timer.setSingleShot(True)
+        self.timer.timeout.connect(self.start_close)
+        self.timer.setInterval(self.duration)
+        self.timer.start()
+
         self._is_closing = False
 
         self._init_ui()
-        self._init_timer()
 
     def _init_ui(self):
         # 不同等级的颜色配置
@@ -93,11 +98,15 @@ class _ToastItem(QFrame):
         # 文本
         msg_label = QLabel(self.text, self)
         msg_label.setWordWrap(True)
+        msg_label.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
         layout.addWidget(msg_label)
 
         # 关闭按钮
         btn_layout = QVBoxLayout()
-        close_btn = QPushButton("×", self)
+        close_btn = QPushButton(self)
+        close_btn.setFlat(True)
+        close_btn.setIcon(theme.get_icon(Icon.close))
+        close_btn.setIconSize(QSize(16, 16))
         close_btn.setFixedSize(18, 18)
         close_btn.setCursor(Qt.CursorShape.PointingHandCursor)
         close_btn.clicked.connect(self.start_close)
@@ -107,18 +116,19 @@ class _ToastItem(QFrame):
 
         self.adjustSize()
 
-    def _init_timer(self):
-        if self.duration > 0:
-            self.timer = QTimer(self)
-            self.timer.setSingleShot(True)
-            self.timer.timeout.connect(self.start_close)
-            self.timer.start(self.duration)
-
     def start_close(self):
         if self._is_closing:
             return
         self._is_closing = True
         self.closed.emit(self)
+
+    def enterEvent(self, event, /):
+        self.timer.stop()
+        super().enterEvent(event)
+
+    def leaveEvent(self, event, /):
+        self.timer.start()
+        super().leaveEvent(event)
 
 
 class ToastNotifier(QObject):
@@ -140,7 +150,7 @@ class ToastNotifier(QObject):
             v_pos: VPos = VPos.top,
             h_pos: HPos = HPos.right,
             max_count: int = 5,
-            duration: int = 3000,
+            duration: int = 5000,
             anim_duration: int = 200
     ):
         super().__init__(parent)

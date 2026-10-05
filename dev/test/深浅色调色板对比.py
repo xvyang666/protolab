@@ -1,7 +1,6 @@
 import sys
 
 from PySide6.QtCore import Qt
-from PySide6.QtGui import QPalette
 from PySide6.QtWidgets import (
     QApplication,
     QCalendarWidget,
@@ -44,7 +43,6 @@ from PySide6.QtWidgets import (
 
 from config.setting import setting
 from theme.theme_mode import ThemeMode
-from util.get_pyside6_qpalette import get_pyside6_QPalette
 
 
 class TestDialog(QDialog):
@@ -74,8 +72,6 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle("PySide6 主题与样式综合测试平台")
 
-        self.is_default_palette = True
-
         menu_bar = self.menuBar()
         file_menu = menu_bar.addMenu("文件")
         file_menu.addAction("新建")
@@ -98,10 +94,6 @@ class MainWindow(QMainWindow):
         self.theme_btn = QPushButton("切换深浅模式")
         self.theme_btn.clicked.connect(self.toggle_theme_mode)
         toolbar.addWidget(self.theme_btn)
-
-        self.theme_btn2 = QPushButton("切换调色板")
-        self.theme_btn2.clicked.connect(self.toggle_palette)
-        toolbar.addWidget(self.theme_btn2)
 
         self.statusBar().showMessage("就绪 - 可以在上方切换 Style 与 Palette")
 
@@ -332,18 +324,6 @@ class MainWindow(QMainWindow):
         }
 
         QApplication.styleHints().setColorScheme(color_schema[setting.theme_mode])
-        self.update_palette()
-
-    def toggle_palette(self):
-        self.is_default_palette = not self.is_default_palette
-        self.update_palette()
-
-    def update_palette(self):
-        if self.is_default_palette:
-            QApplication.setPalette(QPalette())
-
-        else:
-            QApplication.setPalette(get_pyside6_QPalette())
 
 
 if __name__ == "__main__":

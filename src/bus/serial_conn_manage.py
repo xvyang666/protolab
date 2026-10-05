@@ -1,5 +1,9 @@
+import asyncio
+
 from PySide6.QtCore import Signal, QObject
 from PySide6.QtSerialPort import QSerialPort
+
+from bus.global_ref import GlobalRef
 
 
 class _SerialConnManage(QObject):
@@ -19,11 +23,42 @@ class _SerialConnManage(QObject):
         conn.close()
         self.conn_changed_signal.emit(name, False)
 
-    def add_conn(self, name: str, conn: QSerialPort):
-        conn.errorOccurred.connect(lambda err: self.on_serial_error(name, err))
+    async def add_conn(
+            self,
+            name: str,
+            baudRate: int,
+            dataBits: QSerialPort.DataBits,
+            stopBits: QSerialPort.StopBits,
+            parity: QSerialPort.Parity,
+    ) -> QSerialPort | None:
 
+        def _create_and_open():
+            # 由于 open 是阻塞操作, 这里在子线程中创建 QSerialPort
+            # 但后续的 read/write 逻辑直接在主线程调用的, 这个跨线程使用会有bug, 这里创建并连接后再移交到主线程
+            _conn = QSerialPort(
+                name,
+                baudRate=baudRate,
+                dataBits=dataBits,
+                stopBits=stopBits,
+                parity=parity,
+            )
+
+            ok = _conn.open(QSerialPort.OpenModeFlag.ReadWrite)
+            if not ok:
+                return None
+
+            main_thread = GlobalRef.app.thread()
+            _conn.moveToThread(main_thread)
+            return _conn
+
+        conn = await asyncio.to_thread(_create_and_open)
+        if not conn:
+            return None
+
+        conn.errorOccurred.connect(lambda err: self.on_serial_error(name, err))
         self._all_conn[name] = conn
         self.conn_changed_signal.emit(name, True)
+        return conn
 
     def on_serial_error(self, name: str, error: QSerialPort.SerialPortError):
         if error in (

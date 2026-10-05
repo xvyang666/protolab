@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import aiofiles
+
 from config.__meta__ import Meta
 
 

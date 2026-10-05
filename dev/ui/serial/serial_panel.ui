@@ -34,7 +34,25 @@
      <property name="childrenCollapsible">
       <bool>false</bool>
      </property>
-     <widget class="QTextBrowser" name="textBrowser"/>
+     <widget class="QWidget" name="widget_6" native="true">
+      <layout class="QVBoxLayout" name="log_layout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+      </layout>
+     </widget>
      <widget class="QWidget" name="widget_5" native="true">
       <layout class="QVBoxLayout" name="verticalLayout">
        <property name="leftMargin">
@@ -50,162 +68,8 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="QWidget" name="widget_3" native="true">
-         <layout class="QFormLayout" name="formLayout">
-          <property name="leftMargin">
-           <number>9</number>
-          </property>
-          <property name="topMargin">
-           <number>0</number>
-          </property>
-          <property name="rightMargin">
-           <number>9</number>
-          </property>
-          <property name="bottomMargin">
-           <number>0</number>
-          </property>
-          <item row="0" column="0">
-           <widget class="QLabel" name="label">
-            <property name="text">
-             <string>尾部追加</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_2">
-            <property name="text">
-             <string>发送模式</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QWidget" name="widget" native="true">
-            <layout class="QHBoxLayout" name="horizontalLayout">
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item>
-              <widget class="QRadioButton" name="radio_btn_append_mode_none">
-               <property name="text">
-                <string>不追加</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">radio_btn_group_append_mode</string>
-               </attribute>
-              </widget>
-             </item>
-             <item>
-              <widget class="QRadioButton" name="radio_btn_append_mode_rn">
-               <property name="text">
-                <string>\r\n</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">radio_btn_group_append_mode</string>
-               </attribute>
-              </widget>
-             </item>
-             <item>
-              <widget class="QRadioButton" name="radio_btn_append_mode_r">
-               <property name="text">
-                <string>\r</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">radio_btn_group_append_mode</string>
-               </attribute>
-              </widget>
-             </item>
-             <item>
-              <widget class="QRadioButton" name="radio_btn_append_mode_n">
-               <property name="text">
-                <string>\n</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">radio_btn_group_append_mode</string>
-               </attribute>
-              </widget>
-             </item>
-             <item>
-              <spacer name="horizontalSpacer">
-               <property name="orientation">
-                <enum>Qt::Orientation::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-            </layout>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QWidget" name="widget_2" native="true">
-            <layout class="QHBoxLayout" name="horizontalLayout_2">
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>0</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>0</number>
-             </property>
-             <item>
-              <widget class="QRadioButton" name="radio_btn_send_mode_str">
-               <property name="text">
-                <string>str</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">radio_btn_group_send_mode</string>
-               </attribute>
-              </widget>
-             </item>
-             <item>
-              <widget class="QRadioButton" name="radio_btn_send_mode_hex">
-               <property name="text">
-                <string>hex</string>
-               </property>
-               <attribute name="buttonGroup">
-                <string notr="true">radio_btn_group_send_mode</string>
-               </attribute>
-              </widget>
-             </item>
-             <item>
-              <spacer name="horizontalSpacer_2">
-               <property name="orientation">
-                <enum>Qt::Orientation::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-            </layout>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
         <widget class="QWidget" name="widget_4" native="true">
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <layout class="QGridLayout" name="gridLayout">
           <property name="leftMargin">
            <number>0</number>
           </property>
@@ -218,10 +82,7 @@
           <property name="bottomMargin">
            <number>0</number>
           </property>
-          <item>
-           <widget class="QPlainTextEdit" name="input"/>
-          </item>
-          <item>
+          <item row="1" column="1">
            <widget class="QPushButton" name="send_btn">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
@@ -240,6 +101,163 @@
             </property>
            </widget>
           </item>
+          <item row="0" column="0" colspan="2">
+           <widget class="QWidget" name="widget_3" native="true">
+            <layout class="QFormLayout" name="formLayout">
+             <property name="leftMargin">
+              <number>9</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>9</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>尾部追加</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_2">
+               <property name="text">
+                <string>发送模式</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QWidget" name="widget" native="true">
+               <layout class="QHBoxLayout" name="horizontalLayout">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QRadioButton" name="radio_btn_append_mode_none">
+                  <property name="text">
+                   <string>不追加</string>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">radio_btn_group_append_mode</string>
+                  </attribute>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="radio_btn_append_mode_rn">
+                  <property name="text">
+                   <string>\r\n</string>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">radio_btn_group_append_mode</string>
+                  </attribute>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="radio_btn_append_mode_r">
+                  <property name="text">
+                   <string>\r</string>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">radio_btn_group_append_mode</string>
+                  </attribute>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="radio_btn_append_mode_n">
+                  <property name="text">
+                   <string>\n</string>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">radio_btn_group_append_mode</string>
+                  </attribute>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Orientation::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QWidget" name="widget_2" native="true">
+               <layout class="QHBoxLayout" name="horizontalLayout_2">
+                <property name="leftMargin">
+                 <number>0</number>
+                </property>
+                <property name="topMargin">
+                 <number>0</number>
+                </property>
+                <property name="rightMargin">
+                 <number>0</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>0</number>
+                </property>
+                <item>
+                 <widget class="QRadioButton" name="radio_btn_send_mode_str">
+                  <property name="text">
+                   <string>str</string>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">radio_btn_group_send_mode</string>
+                  </attribute>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QRadioButton" name="radio_btn_send_mode_hex">
+                  <property name="text">
+                   <string>hex</string>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">radio_btn_group_send_mode</string>
+                  </attribute>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_2">
+                  <property name="orientation">
+                   <enum>Qt::Orientation::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <layout class="QVBoxLayout" name="input_layout"/>
+          </item>
          </layout>
         </widget>
        </item>
@@ -252,7 +270,7 @@
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="radio_btn_group_append_mode"/>
   <buttongroup name="radio_btn_group_send_mode"/>
+  <buttongroup name="radio_btn_group_append_mode"/>
  </buttongroups>
 </ui>

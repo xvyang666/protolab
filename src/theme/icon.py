@@ -8,7 +8,11 @@ class IconEnum(Enum):
 
 class Icon(IconEnum):
     app_icon = 'app-icon.svg'
+    close = 'close.svg'
     code_assistant_protocol = 'codeAssistantProtocol.svg'
+    column = 'column.svg'
+    delete = 'delete.svg'
+    download = 'download.svg'
     edit = 'edit.svg'
     enable_dot = 'enable_dot.svg'
     error_dialog = 'errorDialog.svg'
@@ -19,6 +23,7 @@ class Icon(IconEnum):
     palette = 'palette.svg'
     refresh = 'refresh.svg'
     run = 'run.svg'
+    scroll_down = 'scrollDown.svg'
     send = 'send.svg'
     serial = 'serial.svg'
     settings = 'settings.svg'

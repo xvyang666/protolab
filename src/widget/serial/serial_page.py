@@ -113,7 +113,7 @@ class SerialPage(QWidget):
         for i in range(self.ui.com_list.count()):
             item = self.ui.com_list.item(i)
 
-            if item.data(Qt.ItemDataRole.UserRole, Qt.ItemDataRole.DisplayRole) == current_widget.name:
+            if item.data(Qt.ItemDataRole.UserRole) == current_widget.name:
                 self.ui.com_list.blockSignals(True)
                 self.ui.com_list.setCurrentItem(item)
                 self.ui.com_list.blockSignals(False)
@@ -128,7 +128,7 @@ class SerialPage(QWidget):
         current_widget.deleteLater()
 
         list_item = self.ui.com_list.currentItem()
-        if list_item.data(Qt.ItemDataRole.UserRole, Qt.ItemDataRole.DisplayRole) == current_widget.name:
+        if list_item.data(Qt.ItemDataRole.UserRole) == current_widget.name:
             self.ui.com_list.blockSignals(True)
             self.ui.com_list.setCurrentItem(None)
             self.ui.com_list.blockSignals(False)

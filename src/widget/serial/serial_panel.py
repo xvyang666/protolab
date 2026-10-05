@@ -1,10 +1,16 @@
+from datetime import datetime, timezone
+
 from PySide6.QtCore import QTimer
+from PySide6.QtGui import QColor
 from PySide6.QtSerialPort import QSerialPort
 from PySide6.QtWidgets import QWidget, QAbstractButton, QRadioButton
 
 from bus.global_ref import GlobalRef
 from bus.obj import theme
 from bus.serial_conn_manage import serial_conn_manage
+from comp.EnterSubmitPlainTextEdit import EnterTextEdit
+from comp.hex_data_view.types import HexViewRowData, HexViewDirection
+from comp.hex_data_view.widget import HexViewWidget
 from config.setting import setting
 from model.SerialSendConfig import SerialSendConfig
 from theme.icon import Icon
@@ -19,6 +25,16 @@ class SerialPanel(QWidget):
         self.ui.port_label.setText(name)
         self.ui.send_btn.setIcon(theme.get_icon(Icon.send))
         self.ui.splitter.setSizes([9999, 0])
+        self.hex_view = HexViewWidget(
+            f'{name}.txt',
+            QColor(theme.color.primary.main),
+            QColor(theme.color.secondary.main),
+            self
+        )
+        self.ui.log_layout.addWidget(self.hex_view)
+
+        self.input = EnterTextEdit(self)
+        self.ui.input_layout.addWidget(self.input)
 
         self.name = name
         self.conn: QSerialPort | None = None
@@ -56,6 +72,7 @@ class SerialPanel(QWidget):
         self.ui.radio_btn_group_append_mode.buttonClicked.connect(self.追加模式变化)
         self.ui.radio_btn_group_send_mode.buttonClicked.connect(self.发送模式变化)
         self.ui.send_btn.clicked.connect(self.发送按钮被点击)
+        self.input.submitted.connect(self.send_data)
 
         self.初始化连接()
 
@@ -89,7 +106,13 @@ class SerialPanel(QWidget):
         data = bytes(self.buffer)
         self.buffer.clear()
 
-        self.ui.textBrowser.append(data.hex(' '))
+        self.hex_view.append_row(
+            HexViewRowData(
+                date_time=datetime.now(timezone.utc),
+                bytes_data=data,
+                direction=HexViewDirection.RX,
+            )
+        )
 
     def 追加模式变化(self, btn: QAbstractButton):
         assert isinstance(btn, QRadioButton)
@@ -102,13 +125,18 @@ class SerialPanel(QWidget):
         setting.serial_send_config[self.name] = self.send_cfg
 
     def 发送按钮被点击(self):
-        src_text = self.ui.input.toPlainText()
+        src_text = self.input.toPlainText()
+        self.send_data(src_text)
+
+    def send_data(self, s: str):
+        if not s:
+            return
 
         if self.send_cfg.send_mode == SerialSendConfig.SendMode.str:
-            data = src_text.encode()
+            data = s.encode()
         elif self.send_cfg.send_mode == SerialSendConfig.SendMode.hex:
             try:
-                data = bytes.fromhex(src_text)
+                data = bytes.fromhex(s)
             except:
                 GlobalRef.main_window_notifier.warning(self.tr('请输入有效的 hex 数据'))
                 return
@@ -128,8 +156,15 @@ class SerialPanel(QWidget):
 
         if self.conn:
             self.conn.write(data)
+            self.hex_view.append_row(
+                HexViewRowData(
+                    date_time=datetime.now(timezone.utc),
+                    bytes_data=data,
+                    direction=HexViewDirection.TX,
+                )
+            )
         else:
             GlobalRef.main_window_notifier.warning(self.tr('串口 {} 未连接').format(self.name))
             return
 
-        self.ui.input.setPlainText('')
+        self.input.setPlainText('')

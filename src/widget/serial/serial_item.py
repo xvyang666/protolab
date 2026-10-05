@@ -2,7 +2,7 @@ import asyncio
 
 from PySide6.QtCore import Signal
 from PySide6.QtSerialPort import QSerialPort
-from PySide6.QtWidgets import QWidget, QMessageBox
+from PySide6.QtWidgets import QWidget
 
 from bus.global_ref import GlobalRef
 from bus.obj import theme
@@ -51,32 +51,15 @@ class SerialItem(QWidget):
             serial_conn_manage.close_conn(self.name)
 
         else:
-            main_thread = GlobalRef.app.thread()
-
-            def _create_and_open():
-                # 由于 open 是阻塞操作, 这里在子线程中创建 QSerialPort
-                # 但后续的 read/write 逻辑直接在主线程调用的, 这个跨线程使用会有bug, 这里创建并连接后再移交到主线程
-                _conn = QSerialPort(
-                    self.cfg.name,
-                    baudRate=self.cfg.baud_rate,
-                    dataBits=self.cfg.data_bit,
-                    stopBits=self.cfg.stop_bit,
-                    parity=self.cfg.parity,
-                )
-
-                ok = _conn.open(QSerialPort.OpenModeFlag.ReadWrite)
-                if not ok:
-                    return None
-
-                _conn.moveToThread(main_thread)
-                return _conn
-
-            conn = await asyncio.to_thread(_create_and_open)
+            conn = await serial_conn_manage.add_conn(
+                name=self.cfg.name,
+                baudRate=self.cfg.baud_rate,
+                dataBits=self.cfg.data_bit,
+                stopBits=self.cfg.stop_bit,
+                parity=self.cfg.parity,
+            )
             if not conn:
-                QMessageBox.warning(self, self.tr('连接失败'), self.tr('串口 {} 连接失败, 请刷新串口列表或检查是否被占用').format(self.cfg.name))
-                return
-
-            serial_conn_manage.add_conn(self.cfg.name, conn)
+                GlobalRef.main_window_notifier.error(self.tr('串口 {} 连接失败, 请刷新串口列表或检查是否被占用').format(self.cfg.name))
 
         self.ui.run_or_stop_btn.setEnabled(True)
 

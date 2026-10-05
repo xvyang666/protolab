@@ -1,12 +1,13 @@
 import sys
 from datetime import datetime, timezone
 
+from PySide6 import QtAsyncio
 from PySide6.QtWidgets import (
     QApplication, QWidget, QVBoxLayout, QPushButton
 )
 
-from dev.test.hex_data_view.hex_view_model import HexViewRowData, HexViewDirection
-from dev.test.hex_data_view.hex_view_widget import HexViewWidget
+from comp.hex_data_view.types import HexViewDirection, HexViewRowData
+from comp.hex_data_view.widget import HexViewWidget
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
@@ -14,7 +15,7 @@ if __name__ == "__main__":
     main_widget = QWidget()
     layout = QVBoxLayout(main_widget)
 
-    hex_view = HexViewWidget()
+    hex_view = HexViewWidget('666.txt')
     layout.addWidget(hex_view)
 
     btn_in = QPushButton("从外部添加 IN 数据")
@@ -30,4 +31,4 @@ if __name__ == "__main__":
 
     btn_in.click()
 
-    sys.exit(app.exec())
+    QtAsyncio.run()

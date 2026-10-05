@@ -1,38 +1,84 @@
-from PySide6.QtCore import Qt, QItemSelection
-from PySide6.QtGui import QFontDatabase, QTextCursor
+import asyncio
+
+import aiofiles
+from PySide6.QtCore import Qt, QItemSelection, QSize
+from PySide6.QtGui import QFontDatabase, QTextCursor, QColor, QPalette
 from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QToolBar, QTableView,
-    QStyleFactory, QSplitter, QLabel, QPlainTextEdit
+    QSplitter, QLabel, QPlainTextEdit, QFileDialog
 )
 
-from dev.test.hex_data_view.hex_view_delegate import HexViewDelegate
-from dev.test.hex_data_view.hex_view_model import HexViewModel, HexViewRowData
-from dev.test.hex_data_view.read_only_text_edit import ReadOnlyTextEdit
+from bus.obj import theme
+from comp.hex_data_view.delegate import HexViewDelegate
+from comp.hex_data_view.model import HexViewModel
+from comp.read_only_text_edit import ReadOnlyTextEdit
+from comp.hex_data_view.types import HexViewRowData, HexViewDirection
+from theme.icon import Icon
 
 
 class HexViewWidget(QWidget):
 
-    def __init__(self, parent: QWidget | None = None):
+    def __init__(
+            self,
+            log_name: str = 'log',
+            tx_color: QColor | None = None,
+            rx_color: QColor | None = None,
+            parent: QWidget | None = None,
+    ):
         super().__init__(parent)
-        self._is_syncing = False  # 标志位: 避免光标同步时死循环触发信号
+        self.log_name = log_name
+        self.tx_color = tx_color
+        self.rx_color = rx_color
+
+        self.tx_count = 0
+        self.rx_count = 0
+        self.自动滚动到最后 = True
+
         self._init_ui()
 
     def _init_ui(self):
         main_layout = QVBoxLayout(self)
         main_layout.setContentsMargins(0, 0, 0, 0)
 
-        toolbar = QToolBar(self)
-        main_layout.addWidget(toolbar)
+        title_bar_layout = QHBoxLayout()
+        main_layout.addLayout(title_bar_layout)
 
-        # 添加“重置列宽”按钮选项
-        toolbar.addAction("↺ 重置默认列宽", self._重置列宽)
+        self.tx_label = QLabel(self)
+        if self.tx_color:
+            palette = self.tx_label.palette()
+            palette.setColor(QPalette.ColorRole.WindowText, self.tx_color)
+            self.tx_label.setPalette(palette)
+
+        self.rx_label = QLabel(self)
+        if self.rx_color:
+            palette = self.rx_label.palette()
+            palette.setColor(QPalette.ColorRole.WindowText, self.rx_color)
+            self.rx_label.setPalette(palette)
+
+        title_bar_layout.addWidget(self.tx_label)
+        title_bar_layout.addWidget(self.rx_label)
+
+        title_bar_layout.addStretch()
+
+        toolbar = QToolBar(self)
+        title_bar_layout.addWidget(toolbar)
+
+        toolbar.setIconSize(QSize(16, 16))
+        toolbar.setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonIconOnly)
+        scroll_down_action = toolbar.addAction(theme.get_icon(Icon.scroll_down), self.tr("自动滚动到最后"))
+        scroll_down_action.setCheckable(True)
+        scroll_down_action.setChecked(self.自动滚动到最后)
+        scroll_down_action.toggled.connect(self._自动滚动到最后选项变化)
+
+        toolbar.addAction(theme.get_icon(Icon.column), self.tr("重置默认列宽"), self._重置列宽)
+        toolbar.addAction(theme.get_icon(Icon.download), self.tr("保存日志数据到文件"), lambda: asyncio.create_task(self._保存数据()))
+        toolbar.addAction(theme.get_icon(Icon.delete), self.tr("清空数据"), self._清除全部数据)
 
         # 1. 上方部件: TableView
         self.table_view = QTableView(self)
-        self.table_view.setStyle(QStyleFactory.create('Fusion'))
         self.table_view_model = HexViewModel(self)
         self.table_view.setModel(self.table_view_model)
-        self.table_view.setItemDelegate(HexViewDelegate(self.table_view))
+        self.table_view.setItemDelegate(HexViewDelegate(self.table_view, self.tx_color, self.rx_color))
 
         self.table_view.setSelectionBehavior(QTableView.SelectionBehavior.SelectRows)
         self.table_view.setSelectionMode(QTableView.SelectionMode.SingleSelection)
@@ -86,7 +132,7 @@ class HexViewWidget(QWidget):
         main_splitter.addWidget(bottom_splitter)
 
         # 比例拉伸设置: index 0 (table_view) 占比最大，index 1 (bottom_splitter) 占比小
-        main_splitter.setStretchFactor(0, 2**10)
+        main_splitter.setStretchFactor(0, 2 ** 10)
         main_splitter.setStretchFactor(1, 1)
 
         main_layout.addWidget(main_splitter)
@@ -99,6 +145,13 @@ class HexViewWidget(QWidget):
         self.ascii_edit.cursorPositionChanged.connect(self._ascii选中变化_同步hex选中)
 
         self._重置列宽()
+        self._更新偏移()
+        self._刷新tx_rx统计标签()
+
+    def _自动滚动到最后选项变化(self, checked: bool):
+        self.自动滚动到最后 = checked
+        if checked:
+            self.table_view.scrollToBottom()
 
     def _更新偏移(self):
         self.hex_count_label.setText(self.tr('索引: {}').format(self.hex_edit.textCursor().position() // 3))
@@ -219,5 +272,46 @@ class HexViewWidget(QWidget):
         self.hex_edit.blockSignals(False)
 
     def append_row(self, *row_data: HexViewRowData):
+        for row in row_data:
+            if row.direction == HexViewDirection.TX:
+                self.tx_count += len(row.bytes_data)
+            elif row.direction == HexViewDirection.RX:
+                self.rx_count += len(row.bytes_data)
+            else:
+                raise ValueError
+
+        self._刷新tx_rx统计标签()
+
         self.table_view_model.append_row(*row_data)
-        self.table_view.scrollToBottom()
+
+        if self.自动滚动到最后:
+            self.table_view.scrollToBottom()
+
+    def _清除全部数据(self):
+        self.table_view_model.clear_all()
+        self.tx_count = 0
+        self.rx_count = 0
+
+        self._刷新tx_rx统计标签()
+
+    def _刷新tx_rx统计标签(self):
+        self.tx_label.setText(f'TX: {self.tx_count}')
+        self.rx_label.setText(f'RX: {self.rx_count}')
+
+    async def _保存数据(self):
+        file_path_str, _ = QFileDialog.getSaveFileName(
+            self,
+            "保存数据",
+            self.log_name,
+        )
+
+        if not file_path_str:
+            return
+
+        async with aiofiles.open(file_path_str, "w", encoding="utf-8") as f:
+            for row in self.table_view_model.get_data():
+                timestamp = row.date_time.astimezone().isoformat()
+                direction = row.direction.name
+                hex_data = row.bytes_data.hex(" ")
+
+                await f.write(f"[{timestamp}] [{direction}] {hex_data}\n")

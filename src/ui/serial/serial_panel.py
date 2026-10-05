@@ -15,10 +15,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QButtonGroup, QFormLayout, QHBoxLayout,
-    QLabel, QPlainTextEdit, QPushButton, QRadioButton,
-    QSizePolicy, QSpacerItem, QSplitter, QTextBrowser,
-    QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QButtonGroup, QFormLayout, QGridLayout,
+    QHBoxLayout, QLabel, QPushButton, QRadioButton,
+    QSizePolicy, QSpacerItem, QSplitter, QVBoxLayout,
+    QWidget)
 
 class Ui_SerialPanel(object):
     def setupUi(self, SerialPanel):
@@ -39,15 +39,35 @@ class Ui_SerialPanel(object):
         self.splitter.setObjectName(u"splitter")
         self.splitter.setOrientation(Qt.Orientation.Vertical)
         self.splitter.setChildrenCollapsible(False)
-        self.textBrowser = QTextBrowser(self.splitter)
-        self.textBrowser.setObjectName(u"textBrowser")
-        self.splitter.addWidget(self.textBrowser)
+        self.widget_6 = QWidget(self.splitter)
+        self.widget_6.setObjectName(u"widget_6")
+        self.log_layout = QVBoxLayout(self.widget_6)
+        self.log_layout.setSpacing(0)
+        self.log_layout.setObjectName(u"log_layout")
+        self.log_layout.setContentsMargins(0, 0, 0, 0)
+        self.splitter.addWidget(self.widget_6)
         self.widget_5 = QWidget(self.splitter)
         self.widget_5.setObjectName(u"widget_5")
         self.verticalLayout = QVBoxLayout(self.widget_5)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.widget_3 = QWidget(self.widget_5)
+        self.widget_4 = QWidget(self.widget_5)
+        self.widget_4.setObjectName(u"widget_4")
+        self.gridLayout = QGridLayout(self.widget_4)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.send_btn = QPushButton(self.widget_4)
+        self.send_btn.setObjectName(u"send_btn")
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.send_btn.sizePolicy().hasHeightForWidth())
+        self.send_btn.setSizePolicy(sizePolicy)
+        self.send_btn.setMinimumSize(QSize(0, 0))
+
+        self.gridLayout.addWidget(self.send_btn, 1, 1, 1, 1)
+
+        self.widget_3 = QWidget(self.widget_4)
         self.widget_3.setObjectName(u"widget_3")
         self.formLayout = QFormLayout(self.widget_3)
         self.formLayout.setObjectName(u"formLayout")
@@ -127,28 +147,12 @@ class Ui_SerialPanel(object):
         self.formLayout.setWidget(1, QFormLayout.ItemRole.FieldRole, self.widget_2)
 
 
-        self.verticalLayout.addWidget(self.widget_3)
+        self.gridLayout.addWidget(self.widget_3, 0, 0, 1, 2)
 
-        self.widget_4 = QWidget(self.widget_5)
-        self.widget_4.setObjectName(u"widget_4")
-        self.horizontalLayout_3 = QHBoxLayout(self.widget_4)
-        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.input = QPlainTextEdit(self.widget_4)
-        self.input.setObjectName(u"input")
+        self.input_layout = QVBoxLayout()
+        self.input_layout.setObjectName(u"input_layout")
 
-        self.horizontalLayout_3.addWidget(self.input)
-
-        self.send_btn = QPushButton(self.widget_4)
-        self.send_btn.setObjectName(u"send_btn")
-        sizePolicy = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Minimum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.send_btn.sizePolicy().hasHeightForWidth())
-        self.send_btn.setSizePolicy(sizePolicy)
-        self.send_btn.setMinimumSize(QSize(0, 0))
-
-        self.horizontalLayout_3.addWidget(self.send_btn)
+        self.gridLayout.addLayout(self.input_layout, 1, 0, 1, 1)
 
 
         self.verticalLayout.addWidget(self.widget_4)
@@ -166,6 +170,7 @@ class Ui_SerialPanel(object):
     def retranslateUi(self, SerialPanel):
         SerialPanel.setWindowTitle(QCoreApplication.translate("SerialPanel", u"Form", None))
         self.port_label.setText(QCoreApplication.translate("SerialPanel", u"TextLabel", None))
+        self.send_btn.setText("")
         self.label.setText(QCoreApplication.translate("SerialPanel", u"\u5c3e\u90e8\u8ffd\u52a0", None))
         self.label_2.setText(QCoreApplication.translate("SerialPanel", u"\u53d1\u9001\u6a21\u5f0f", None))
         self.radio_btn_append_mode_none.setText(QCoreApplication.translate("SerialPanel", u"\u4e0d\u8ffd\u52a0", None))
@@ -174,6 +179,5 @@ class Ui_SerialPanel(object):
         self.radio_btn_append_mode_n.setText(QCoreApplication.translate("SerialPanel", u"\\n", None))
         self.radio_btn_send_mode_str.setText(QCoreApplication.translate("SerialPanel", u"str", None))
         self.radio_btn_send_mode_hex.setText(QCoreApplication.translate("SerialPanel", u"hex", None))
-        self.send_btn.setText("")
     # retranslateUi
 
