@@ -55,7 +55,7 @@ class HexViewModel(QAbstractTableModel):
                 return row_data.direction.name
 
             elif col == self.Col_Index_Time:
-                return row_data.date_time.strftime('%Y-%m-%d %H:%M:%S.%f')
+                return row_data.date_time.astimezone().strftime('%Y-%m-%d %H:%M:%S.%f')
 
             elif col == self.Col_Index_Data:
                 return f'{row_data.bytes_data[:self.Data_Max_Len].hex(' ')}{"..." if len(row_data.bytes_data) > self.Data_Max_Len else ""}'
