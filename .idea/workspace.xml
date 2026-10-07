@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="106e9ab2-7a6d-41f5-abfe-a7269c761370" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/.readme/img_app_dark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.readme/img_app_light.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/locales/app_en.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dev/locales/app_en.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/locales/app_zh.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/locales/app_zh_CN.ts" beforeDir="false" afterPath="$PROJECT_DIR$/dev/locales/app_zh_CN.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/locales/en.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/locales/zh.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bus/global_ref.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bus/global_ref.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/comp/hex_data_view/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/comp/hex_data_view/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uv.lock" beforeDir="false" afterPath="$PROJECT_DIR$/uv.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widget/main_window/main_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/widget/main_window/main_window.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,56 +46,56 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.color.executor": "Run",
-    "Python.dataView.executor": "Run",
-    "Python.gen_icon_code.executor": "Run",
-    "Python.gen_icon_define.executor": "Run",
-    "Python.gen_res_and_icon_code (1).executor": "Run",
-    "Python.gen_res_code (1).executor": "Run",
-    "Python.gen_res_code.executor": "Run",
-    "Python.hex_data_view_test.executor": "Run",
-    "Python.icon.executor": "Run",
-    "Python.icon_config.executor": "Run",
-    "Python.lino.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.main_test (1).executor": "Run",
-    "Python.modbustest.executor": "Run",
-    "Python.obj.executor": "Run",
-    "Python.qss.executor": "Run",
-    "Python.serial_asyncio_com10 (1).executor": "Run",
-    "Python.serial_asyncio_com10.executor": "Run",
-    "Python.serial_asyncio_com11.executor": "Run",
-    "Python.serial_asyncio_test.executor": "Run",
-    "Python.tab.executor": "Run",
-    "Python.table_view_model (1).executor": "Run",
-    "Python.table_view_model.executor": "Run",
-    "Python.toast.executor": "Run",
-    "Python.translate_gen_ts.executor": "Run",
-    "Python.tuple_namedtuple_test.executor": "Run",
-    "Python.util.executor": "Run",
-    "Python.数据显示示例.executor": "Run",
-    "Python.深浅色调色板对比 (1).executor": "Run",
-    "Python.深浅色调色板对比.executor": "Run",
-    "Python.深色标题栏.executor": "Run",
-    "Python.菜单示例.executor": "Run",
-    "Python.颜色转换测试.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "jsx.switch.disabled": "true",
-    "last_opened_file_path": "D:/dev/protolab/res/icon/dark",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "aDefault",
-    "settings.editor.selected.configurable": "configurable.group.python.group.settings",
-    "ts.external.directory.path": "D:\\tool\\jetbrains\\pycharm-2026.1.5.win\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.color.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dataView.executor&quot;: &quot;Run&quot;,
+    &quot;Python.gen_icon_code.executor&quot;: &quot;Run&quot;,
+    &quot;Python.gen_icon_define.executor&quot;: &quot;Run&quot;,
+    &quot;Python.gen_res_and_icon_code (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.gen_res_code (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.gen_res_code.executor&quot;: &quot;Run&quot;,
+    &quot;Python.hex_data_view_test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.icon.executor&quot;: &quot;Run&quot;,
+    &quot;Python.icon_config.executor&quot;: &quot;Run&quot;,
+    &quot;Python.lino.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main_test (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.modbustest.executor&quot;: &quot;Run&quot;,
+    &quot;Python.obj.executor&quot;: &quot;Run&quot;,
+    &quot;Python.qss.executor&quot;: &quot;Run&quot;,
+    &quot;Python.serial_asyncio_com10 (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.serial_asyncio_com10.executor&quot;: &quot;Run&quot;,
+    &quot;Python.serial_asyncio_com11.executor&quot;: &quot;Run&quot;,
+    &quot;Python.serial_asyncio_test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.tab.executor&quot;: &quot;Run&quot;,
+    &quot;Python.table_view_model (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.table_view_model.executor&quot;: &quot;Run&quot;,
+    &quot;Python.toast.executor&quot;: &quot;Run&quot;,
+    &quot;Python.translate_gen_ts.executor&quot;: &quot;Run&quot;,
+    &quot;Python.tuple_namedtuple_test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.util.executor&quot;: &quot;Run&quot;,
+    &quot;Python.数据显示示例.executor&quot;: &quot;Run&quot;,
+    &quot;Python.深浅色调色板对比 (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.深浅色调色板对比.executor&quot;: &quot;Run&quot;,
+    &quot;Python.深色标题栏.executor&quot;: &quot;Run&quot;,
+    &quot;Python.菜单示例.executor&quot;: &quot;Run&quot;,
+    &quot;Python.颜色转换测试.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;jsx.switch.disabled&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/dev/protolab/res/icon/dark&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.python.group.settings&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\tool\\jetbrains\\pycharm-2026.1.5.win\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="PyDebuggerOptionsProvider">
     <option name="myDebuggerBackend" value="DEBUGPY" />
   </component>
@@ -113,11 +108,11 @@
       <recent name="D:\dev\protolab\res\locales" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\dev\protolab\.readme" />
       <recent name="D:\dev\protolab\src\comp" />
       <recent name="D:\dev\protolab\dev\test\hex_data_view" />
       <recent name="D:\dev\protolab\res" />
       <recent name="D:\dev\protolab\res\locales" />
-      <recent name="D:\dev\protolab\src\util" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -323,7 +318,8 @@
       <workItem from="1790595474175" duration="57302000" />
       <workItem from="1790943609108" duration="42389000" />
       <workItem from="1791199520110" duration="16638000" />
-      <workItem from="1791249044716" duration="3111000" />
+      <workItem from="1791249044716" duration="3338000" />
+      <workItem from="1791358160754" duration="1173000" />
     </task>
     <servers />
   </component>
@@ -340,12 +336,12 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/protolab$table_view_model__1_.coverage" NAME="table_view_model (1) 覆盖结果" MODIFIED="1791122587122" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/test/hex_data_view" />
     <SUITE FILE_PATH="coverage/protolab$dataView.coverage" NAME="dataView 覆盖结果" MODIFIED="1791122157400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/test" />
-    <SUITE FILE_PATH="coverage/protolab$main.coverage" NAME="main 覆盖结果" MODIFIED="1791356638534" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+    <SUITE FILE_PATH="coverage/protolab$main.coverage" NAME="main 覆盖结果" MODIFIED="1791358834075" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/protolab$tab.coverage" NAME="tab 覆盖结果" MODIFIED="1790943756001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/test" />
     <SUITE FILE_PATH="coverage/protolab$translate_gen_ts.coverage" NAME="translate_gen_ts 覆盖结果" MODIFIED="1791356536112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/tool" />
-    <SUITE FILE_PATH="coverage/protolab$serial_asyncio_com10__1_.coverage" NAME="serial_asyncio_com10 覆盖结果" MODIFIED="1790669138874" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/test" />
-    <SUITE FILE_PATH="coverage/protolab$gen_res_code.coverage" NAME="gen_res_code 覆盖结果" MODIFIED="1790957450165" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/tool" />
     <SUITE FILE_PATH="coverage/protolab$modbustest.coverage" NAME="modbustest 覆盖结果" MODIFIED="1791249528142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/test" />
+    <SUITE FILE_PATH="coverage/protolab$gen_res_code.coverage" NAME="gen_res_code 覆盖结果" MODIFIED="1790957450165" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/tool" />
+    <SUITE FILE_PATH="coverage/protolab$serial_asyncio_com10__1_.coverage" NAME="serial_asyncio_com10 覆盖结果" MODIFIED="1790669138874" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/test" />
     <SUITE FILE_PATH="coverage/protolab$icon_config.coverage" NAME="icon_config 覆盖结果" MODIFIED="1789793324740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/config" />
     <SUITE FILE_PATH="coverage/protolab$gen_icon_define.coverage" NAME="gen_icon_define 覆盖结果" MODIFIED="1789794876301" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/tool" />
     <SUITE FILE_PATH="coverage/protolab$tuple_namedtuple_test.coverage" NAME="tuple_namedtuple_test 覆盖结果" MODIFIED="1791114402899" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dev/test" />

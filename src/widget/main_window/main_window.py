@@ -41,10 +41,10 @@ assert len(Page) == len(All_Page_Data), '缺少配置'
 
 Main_Page = [
     Page.串口,
-    Page.modbus,
-    Page.mqtt,
-    Page.tcp,
-    Page.udp,
+    # Page.modbus,
+    # Page.mqtt,
+    # Page.tcp,
+    # Page.udp,
 ]
 
 
